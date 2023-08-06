@@ -1,9 +1,8 @@
-import landing from "../../pages/landing"
-
+import Landing from "../pages/landing"
 export default function Home() {
   return (
     <>
-      <landing />
+      <Landing/>
     </>
   )
 }
