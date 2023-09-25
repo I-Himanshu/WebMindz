@@ -9,7 +9,7 @@ export default function Login() {
             <div className="input-container flex-col flex">
               <label className="font-semibold" htmlFor="email">Your email</label>
               <input className=" border-b-2 border-cyan-400 outline-none" type="email" id="email" placeholder="Enter your email" />
-            </div>
+            </div> 
             <div className="input-container flex-col flex mt-5">
               <label className="font-semibold" htmlFor="password">Your password</label>
               <input className=" border-b-2 border-cyan-400 outline-none" type="password" id="password" placeholder="Enter your password" /> 
