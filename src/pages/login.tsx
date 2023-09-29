@@ -2,8 +2,8 @@ export default function Login() {
   return (
     <main className="flex min-h-screen flex-col lg:flex-row items-center justify-center lg:justify-between w-full lg:px-40">
         <img className="hidden lg:block" src="https://cdn3d.iconscout.com/3d/premium/thumb/cute-robot-say-hello-5665790-4721951.png" alt="" />
-        <div className="cont relative translate-y-[10%]">
-        <img className="absolute lg:hidden top-0 left-0 -translate-y-[55%] lg:block" src="https://cdn3d.iconscout.com/3d/premium/thumb/cute-robot-say-hello-5665790-4721951.png" alt="" />
+        <div className="cont relative translate-y-[10%] lg:translate-y-0">
+        <img className="absolute lg:hidden top-0 left-0 -translate-y-[55%] block" src="https://cdn3d.iconscout.com/3d/premium/thumb/cute-robot-say-hello-5665790-4721951.png" alt="" />
           <div className="card relative z-20 flex flex-col max-w-[300px] lg:max-w-[500px] max-h-[700px] w-full h-full bg-white p-10 text-black">
           <h2 className="font-extrabold blueGradText text-4xl">Hola!</h2>
           <p className="mt-1">Unlock the Gateway to Your Digital Realm with WebMindz.</p>
