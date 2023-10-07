@@ -3,8 +3,25 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'Alexana Neue';
+  src: url('../../public/fonts/Alexana Neue.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Anurati";
+  src: url("../../public/fonts/Anurati-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  font-family: "Anurati", sans-serif;
+}
 .secondaryFont {
   font-family: 'IBM Plex Mono', monospace;
+  font-family: "Alexana Neue", sans-serif;
 }
 .tertiaryFont{
   font-family: 'Quicksand', sans-serif;

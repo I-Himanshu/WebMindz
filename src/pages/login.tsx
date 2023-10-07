@@ -1,3 +1,4 @@
+import "../app/globals.css";
 export default function Login() {
   return (
     <main className="flex min-h-screen flex-col lg:flex-row items-center justify-center lg:justify-between w-full lg:px-40">
