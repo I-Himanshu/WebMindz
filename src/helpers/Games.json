@@ -1,0 +1,18 @@
+
+[
+    {
+      "imageSrc": "https://media.tenor.com/2NwU1jFgGP8AAAAM/pacman.gif",
+      "name": "Example Name 1",
+      "description": "Description for Example 1",
+      "visitLink": "https://example1.com",
+      "tag": "Tag 1"
+    },
+    {
+      "imageSrc": "https://via.placeholder.com/150",
+      "name": "Example Name 2",
+      "description": "A physics-based archery game where you control a ragdoll archer and compete against other archers",
+      "visitLink": "https://example2.com",
+      "tag": "Tag 2"
+    }
+  ]
+  
