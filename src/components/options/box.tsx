@@ -5,9 +5,9 @@ interface IconBoxProps {
 
 const IconBox: React.FC<IconBoxProps> = ({ iconClass, text }) => {
   return (
-    <div className="p-4 border rounded-lg shadow-md text-center bg-white text-black">
-      <i className={`${iconClass} text-2xl mb-2 text-black`} />
-      <p>{text}</p>
+    <div className="py-7 rounded-lg shadow-md text-center blueGrad2 group text-black">
+      <i className={`${iconClass} text-5xl mb-2 text-black transition-all group-hover:text-white`} />
+      <p className="secondaryFont transition-all group-hover:text-white text-2xl">{text}</p>
     </div>
   );
 };

@@ -37,6 +37,16 @@
 .blueGrad{
   background-color: #06bcfb;
   background-image: linear-gradient(315deg, #06bcfb 0%, #4884ee 74%);
+}
+.blueGrad2{
+  background-color: #aee1f9;
+  background-image: linear-gradient(315deg, #aee1f9 0%, #f6ebe6 74%);
+  transition: all 5s ease-in-out;
+  cursor: pointer;
+}
+.blueGrad2:hover{
+  background-color: #06bcfb;
+  background-image: linear-gradient(315deg, #06bcfb 0%, #4884ee 74%);
   transition: all 5s ease-in-out;
 }
 .bg{
