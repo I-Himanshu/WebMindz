@@ -15,7 +15,18 @@
   font-weight: normal;
   font-style: normal;
 }
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: #4a90e2; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #357abd; /* Color of the thumb on hover */
+}
 *{
   font-family: "Anurati", sans-serif;
 }
@@ -46,6 +57,11 @@
 .blueGrad2:hover{
   background-color: #06bcfb;
   background-image: linear-gradient(315deg, #06bcfb 0%, #4884ee 74%);
+}
+.blueGradBorder{
+  /* background-color: #06bcfb; */
+  border-image: linear-gradient(315deg, #06befbc0 0%, #4885eec8 74%);
+  border-image-slice: 1;
 }
 .bg{
   background-image: url("https://i.gifer.com/J4o.gif");
@@ -81,6 +97,15 @@
   width: 100%;
   top: 0;
   left: 0;
+}
+.bg2::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
 }
 :root {
   --foreground-rgb: 0, 0, 0;
