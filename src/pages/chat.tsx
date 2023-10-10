@@ -7,8 +7,8 @@ export default function Chat() {
     return (
         <main className='min-h-screen bg-[#15132f]'>
             <div className="flex flex-row w-full max-h-screen">
-                <div className="flex flex-col items-center w-[20%] max-h-screen hover:overflow-y-scroll overflow-y-hidden bg-[#080716] pt-8 px-2 pr-4 hover:pr-2">
-                    <div className="flex flex-row justify-between w-full">
+                <div className="flex flex-col items-center md:w-[30%] lg:w-[20%] max-h-screen hover:overflow-y-scroll overflow-y-hidden bg-[#080716] pt-8 px-2 pr-4 hover:pr-2">
+                    <div className="hidden md:flex flex-row justify-between w-full">
                         <p className="px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
                             <b className='mr-4'>+</b>
                             New Chat
@@ -32,12 +32,14 @@ export default function Chat() {
                     <History />
                     <History />
                 </div>
-                <div className="flex flex-col pb-10 px-4 justify-end items-center w-[80%] max-h-screen overflow-y-scroll">
+                <div className="flex flex-col pb-10 px-4 md:px-2 justify-end items-center md:w-[70%] lg:w-[80%] max-h-screen overflow-y-scroll">
                     <User/>
+                    <Robo/>
+                    <User/><User/>
                     <Robo/>
                     <User/>
                     <div className="flex flex-row justify-center bottom-[30px] bg-[#15132f] mx-auto w-[100%] mt-8">
-                        <div className="flex bg-[#080716] px-4 w-[65%]">
+                        <div className="flex bg-[#080716] px-4 w-[65%] md:w-[85%]">
                         <textarea
                             className="w-[100%] h-[60px] max-h-[100px] secondaryFont px-2 py-4 bg-[#080716] border-0 outline-none hover:border-none hover:outline-none rounded-lg"
                             placeholder="Type your message..."
