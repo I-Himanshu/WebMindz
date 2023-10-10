@@ -8,9 +8,9 @@ export default function Chat() {
   return (
     <main className="min-h-screen bg-[#15132f]">
       <div className="flex flex-row w-full min-h-screen">
-        <div className="flex flex-col items-center md:w-[30%] lg:w-[20%] max-h-screen hover:overflow-y-scroll overflow-y-hidden bg-[#080716] pt-8 px-2 pr-4 hover:pr-2">
-          <div className="hidden md:flex flex-row justify-between w-full">
-            <p className="px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
+        <div className="hidden md:flex flex-col items-center md:w-[30%] lg:w-[20%] max-h-screen hover:overflow-y-scroll overflow-y-hidden bg-[#080716] pt-8 px-2 pr-4 hover:pr-2">
+          <div className="flex flex-row justify-between w-full">
+            <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
               <b className="mr-4">+</b>
               New Chat
             </p>
@@ -43,8 +43,35 @@ export default function Chat() {
           <History />
           <History />
         </div>
-        <div className="flex flex-col pb-10 md:px-0 justify-end items-center md:w-[70%] lg:w-[80%] max-h-screen overflow-y-scroll">
-          <div className="bg-400 overflow-y-scroll px-4">
+        <div className="flex flex-col px-0 pb-10 md:px-0 justify-end items-center w-full md:w-[70%] lg:w-[80%] max-h-screen overflow-y-scroll">
+          <header className="fixed top-0 left-0 w-full py-4 px-2 bg-[#080716] flex md:hidden justify-end items-center">
+          <div className="flex flex-row justify-between w-full">
+            <p className="px-4 text-white py-2 mb-0 w-full blueGrad secondaryFont text-base cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
+              <b className="mr-4">+</b>
+              New Chat
+            </p>
+            <div className="profile">
+              <div className="relative group h-full w-full">
+                <div className="w-[40px] h-[40px] rounded-full ">
+                  <img
+                    className="w-full h-full rounded-full cursor-pointer"
+                    src="https://i.pravatar.cc/300"
+                    alt=""
+                  />
+                </div>
+                <div className="opacity-0 group-hover:opacity-100 absolute z-20 -bottom-[80px] right-0 bg-[#15132f] w-[150px] p-2">
+                  <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2 pb-2 border-b-[1px] border-[#eeeeee5f]">
+                    Profile Name
+                  </p>
+                  <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2">
+                    Logout
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </header>
+          <div className="bg-400 overflow-y-scroll mt-[75px] md:mt-0 px-4">
             <User />
             <Robo />
             <User />
@@ -52,10 +79,10 @@ export default function Chat() {
             <Robo />
             <User />
           </div>
-          <div className="flex flex-row justify-center bottom-[30px] md:bottom-[15px] pt-4 bg-[#15132f] mx-auto w-[100%] mt-8 relative">
-            <div className="relative flex justify-center items-end max-h-[300px] bg-[#080716] px-4 w-[65%] md:w-[85%] chatInputBox overflow-y-scroll">
+          <div className="flex flex-row justify-center bottom-[10px] md:bottom-[15px] pt-4 bg-[#15132f] mx-auto w-[100%] mt-8 relative">
+            <div className="relative flex justify-center items-end max-h-[300px] bg-[#080716] px-4 w-[90%] md:w-[85%] chatInputBox overflow-y-scroll">
               <textarea
-                className="w-[100%] min-h-[60px] resize-none secondaryFont px-2 py-4 bg-[#080716] border-0 outline-none hover:border-none hover:outline-none rounded-lg chatInputTextarea"
+                className="w-[100%] min-h-[60px] text-white resize-none secondaryFont px-2 py-4 bg-[#080716] border-0 outline-none hover:border-none hover:outline-none rounded-lg chatInputTextarea"
                 placeholder="Type your message..."
                 // set row according to content in it
                 rows={1}

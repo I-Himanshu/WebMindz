@@ -11,9 +11,9 @@ export default function Home() {
       {/* <Landing/> */}
       {/* <Login/> */}
       {/* <Options/> */}
-      {/* <UnitConverter/> */}
+      <UnitConverter/>
       {/* <Games/> */}
-      <Chat/>
+      {/* <Chat/> */}
     </>
   );
 }
