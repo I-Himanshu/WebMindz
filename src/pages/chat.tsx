@@ -43,8 +43,8 @@ export default function Chat() {
           <History />
           <History />
         </div>
-        <div className="flex flex-col pb-10 px-4 md:px-2 justify-end items-center md:w-[70%] lg:w-[80%] max-h-screen overflow-y-scroll">
-          <div className="bg-400 overflow-scroll">
+        <div className="flex flex-col pb-10 md:px-0 justify-end items-center md:w-[70%] lg:w-[80%] max-h-screen overflow-y-scroll">
+          <div className="bg-400 overflow-y-scroll px-4">
             <User />
             <Robo />
             <User />
@@ -52,10 +52,10 @@ export default function Chat() {
             <Robo />
             <User />
           </div>
-          <div className="flex flex-row justify-center bottom-[30px] bg-[#15132f] mx-auto w-[100%] mt-8 relative">
-            <div className="flex max-h-[300px] bg-[#080716] px-4 w-[65%] md:w-[85%] chatInputBox overflow-scroll">
+          <div className="flex flex-row justify-center bottom-[30px] md:bottom-[15px] pt-4 bg-[#15132f] mx-auto w-[100%] mt-8 relative">
+            <div className="relative flex justify-center items-end max-h-[300px] bg-[#080716] px-4 w-[65%] md:w-[85%] chatInputBox overflow-y-scroll">
               <textarea
-                className="w-[100%] min-h-[60px] secondaryFont px-2 py-4 bg-[#080716] border-0 outline-none hover:border-none hover:outline-none rounded-lg chatInputTextarea"
+                className="w-[100%] min-h-[60px] resize-none secondaryFont px-2 py-4 bg-[#080716] border-0 outline-none hover:border-none hover:outline-none rounded-lg chatInputTextarea"
                 placeholder="Type your message..."
                 // set row according to content in it
                 rows={1}
@@ -66,10 +66,10 @@ export default function Chat() {
                     e.currentTarget.scrollHeight + "px";
                 }}
               />
-              <button className="blueGradText text-2xl opacity-75 transition-all hover:opacity-100 mx-2">
+              <button className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2">
                 <i className="fa-solid fa-paper-plane"></i>
               </button>
-              <button className="blueGradText text-2xl opacity-75 transition-all hover:opacity-100 mx-2">
+              <button className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2">
                 <i className="fa-solid fa-microphone"></i>
               </button>
             </div>
