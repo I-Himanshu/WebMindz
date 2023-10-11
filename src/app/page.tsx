@@ -10,10 +10,10 @@ export default function Home() {
     <>
       {/* <Landing/> */}
       {/* <Login/> */}
-      <Options/>
+      {/* <Options/> */}
       {/* <UnitConverter/> */}
       {/* <Games/> */}
-      {/* <Chat/> */}
+      <Chat/>
     </>
   );
 }

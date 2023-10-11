@@ -2,9 +2,13 @@
 import History from "@/components/chat/history";
 import Robo from "@/components/chat/robo";
 import User from "@/components/chat/user";
-import React from "react";
+import React, { useState } from "react";
+import { toggleListening } from "@/components/chat/speech";
 
 export default function Chat() {
+  const [transcript, setTranscript] = useState("");
+  const [listening, setListening] = useState(false);
+
   return (
     <main className="min-h-screen bg-[#15132f]">
       <div className="flex flex-row w-full min-h-screen">
@@ -45,31 +49,31 @@ export default function Chat() {
         </div>
         <div className="flex flex-col px-0 pb-10 md:px-0 justify-end items-center w-full md:w-[70%] lg:w-[80%] max-h-screen overflow-y-scroll">
           <header className="fixed top-0 left-0 w-full py-4 px-2 bg-[#080716] flex md:hidden justify-end items-center">
-          <div className="flex flex-row justify-between w-full">
-            <p className="px-4 text-white py-2 mb-0 w-full blueGrad secondaryFont text-base cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
-              <b className="mr-4">+</b>
-              New Chat
-            </p>
-            <div className="profile">
-              <div className="relative group h-full w-full">
-                <div className="w-[40px] h-[40px] rounded-full ">
-                  <img
-                    className="w-full h-full rounded-full cursor-pointer"
-                    src="https://i.pravatar.cc/300"
-                    alt=""
-                  />
-                </div>
-                <div className="opacity-0 group-hover:opacity-100 absolute z-20 -bottom-[80px] right-0 bg-[#15132f] w-[150px] p-2">
-                  <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2 pb-2 border-b-[1px] border-[#eeeeee5f]">
-                    Profile Name
-                  </p>
-                  <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2">
-                    Logout
-                  </p>
+            <div className="flex flex-row justify-between w-full">
+              <p className="px-4 text-white py-2 mb-0 w-full blueGrad secondaryFont text-base cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
+                <b className="mr-4">+</b>
+                New Chat
+              </p>
+              <div className="profile">
+                <div className="relative group h-full w-full">
+                  <div className="w-[40px] h-[40px] rounded-full ">
+                    <img
+                      className="w-full h-full rounded-full cursor-pointer"
+                      src="https://i.pravatar.cc/300"
+                      alt=""
+                    />
+                  </div>
+                  <div className="opacity-0 group-hover:opacity-100 absolute z-20 -bottom-[80px] right-0 bg-[#15132f] w-[150px] p-2">
+                    <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2 pb-2 border-b-[1px] border-[#eeeeee5f]">
+                      Profile Name
+                    </p>
+                    <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2">
+                      Logout
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </header>
           <div className="bg-400 overflow-y-scroll mt-[75px] md:mt-0 px-4">
             <User />
@@ -87,7 +91,9 @@ export default function Chat() {
                 // set row according to content in it
                 rows={1}
                 // set min height
+                value={transcript}
                 onInput={(e) => {
+                  setTranscript(e.currentTarget.value);
                   e.currentTarget.style.height = "auto";
                   e.currentTarget.style.height =
                     e.currentTarget.scrollHeight + "px";
@@ -96,7 +102,17 @@ export default function Chat() {
               <button className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2">
                 <i className="fa-solid fa-paper-plane"></i>
               </button>
-              <button className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2">
+              <button
+                className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2"
+                onClick={() => {
+                  toggleListening(
+                    listening,
+                    setListening,
+                    transcript,
+                    setTranscript
+                  );
+                }}
+              >
                 <i className="fa-solid fa-microphone"></i>
               </button>
             </div>
