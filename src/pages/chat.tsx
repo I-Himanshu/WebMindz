@@ -127,7 +127,7 @@ export default function Chat() {
               </div>
             </div>
           </header>
-          <div className="bg-400 overflow-y-scroll mt-[75px] md:mt-0 px-4">
+          <div className="w-full overflow-y-scroll mt-[75px] md:mt-0 px-4">
             {
             MSGS.map((
               msg:any,
