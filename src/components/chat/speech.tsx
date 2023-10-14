@@ -10,7 +10,7 @@ export const toggleListening = (listening:any,setListening:any,transcript:any,se
       recognition.interimResults = true;
       recognition.lang = 'en-US';
       recognition.maxAlternatives = 1;
-      
+
 
       recognition.onstart = () => {
         console.log('Listening!');

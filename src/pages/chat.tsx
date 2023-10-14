@@ -8,6 +8,57 @@ import { toggleListening } from "@/components/chat/speech";
 export default function Chat() {
   const [transcript, setTranscript] = useState("");
   const [listening, setListening] = useState(false);
+  const [MSGS,setMSGS] = useState([
+  {
+    text: "Hello",
+    isUser: false
+  },
+  {
+    text: "Hi",
+    isUser: true,
+  },
+  {
+    text: "How are you?",
+    isUser: false,
+  },
+  {
+    text: "I am fine",
+    isUser: true,
+  },
+  {
+    text: "What about you?",
+    isUser: true,
+  },
+  {
+    text: "I am fine too",
+    isUser: false,
+  },
+  {
+    text: "What are you doing?",
+    isUser: false,
+  },
+  {
+    text: "I am doing nothing",
+    isUser: true,
+  },
+  {
+    text: "What about you?",
+    isUser: true,
+  },
+  {
+    text: "I am doing nothing too",
+    isUser: false,
+  },
+  {
+    text: "Ok",
+    isUser: true,
+  },
+  {
+    text: "Bye",
+    isUser: false,
+  }
+]
+);
 
   return (
     <main className="min-h-screen bg-[#15132f]">
@@ -76,12 +127,18 @@ export default function Chat() {
             </div>
           </header>
           <div className="bg-400 overflow-y-scroll mt-[75px] md:mt-0 px-4">
-            <User />
-            <Robo />
-            <User />
-            <User />
-            <Robo />
-            <User />
+            {
+            MSGS.map((
+              msg:any,
+              index:any
+            ) => {
+              if (msg.isUser) {
+                return <User key={index} msg={msg.text} />;
+              } else {
+                return <Robo key={index} msg={msg.text} />;
+              }
+            })
+            }
           </div>
           <div className="flex flex-row justify-center bottom-[10px] md:bottom-[15px] pt-4 bg-[#15132f] mx-auto w-[100%] mt-8 relative">
             <div className="relative flex justify-center items-end max-h-[300px] bg-[#080716] px-4 w-[90%] md:w-[85%] chatInputBox overflow-y-scroll">
@@ -92,14 +149,19 @@ export default function Chat() {
                 rows={1}
                 // set min height
                 value={transcript}
-                onInput={(e) => {
+                onInput={(e) =>{
                   setTranscript(e.currentTarget.value);
                   e.currentTarget.style.height = "auto";
                   e.currentTarget.style.height =
                     e.currentTarget.scrollHeight + "px";
                 }}
               />
-              <button className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2">
+              <button className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2" onClick={
+                () => {
+                  setMSGS([...MSGS,{text:transcript,isUser:true}]);
+                  setTranscript("");
+                }
+              }>
                 <i className="fa-solid fa-paper-plane"></i>
               </button>
               <button
