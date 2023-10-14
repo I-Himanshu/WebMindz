@@ -160,17 +160,15 @@ export default function Chat() {
               <button className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2" onClick={
                 () => {
 
-                  setMSGS([...MSGS,{text:transcript,isUser:true}]);
-                  
-
+                setMSGS([...MSGS,{text:transcript,isUser:true}]);
                   const requestOptions = {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ input: transcript})
                 };
-                fetch('http://llamastudio.dev/api/clnpzydgw0001mo08n9kwq6ia', requestOptions)
+                fetch('/api/chat', requestOptions)
                     .then(response => response.json())
-                    .then(data => setMSGS([...MSGS,{text:data,isUser:false}]));
+                    .then(data => setMSGS([...MSGS,{text:data.chat,isUser:false}]));
                 setTranscript("");
                 }
               }>
