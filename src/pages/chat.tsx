@@ -167,7 +167,7 @@ export default function Chat() {
                       console.log(data.chat);
                     window?.responsiveVoice?.speak(data.chat, "UK English Male");
 
-                      setMSGS([...MSGS, { text: data.chat, isUser: false }])
+                      setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])
                     }
                     );
                   setTranscript("");
