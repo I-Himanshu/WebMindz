@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 
 export default function Robo({msg}:any) {
-  // i want to write text like a typewriter using useState
+  msg = "  " + msg;
   const [text, setText] = React.useState("");
   
   useEffect(() => {
     var i = 0;
-    var speed = 100;
+    var speed = 1;
     function typeWriter() {
       if (i < msg.length) {
         setText((prev) => prev + msg.charAt(i));
@@ -14,14 +14,14 @@ export default function Robo({msg}:any) {
         setTimeout(typeWriter, speed);
       }
     }
-    return typeWriter();
-  }
-  , [msg]);
+    typeWriter();
+    return () => {};
+  }, [msg]);
 
   return (
 
-    <div className='w-[9 0%] flex flex-row justify-start'>
-        <p className='bg-[#eee] text-black secondaryFont max-w-[60%] p-4 my-4'>{text}</p>
+    <div className='w-[90%] flex flex-row justify-start'>
+        <p id="markdown-container" className='bg-[#eee] text-black secondaryFont max-w-[60%] p-4 my-4'>{window.marked?window.marked(text):""}</p>
     </div>
   )
 }
