@@ -18,9 +18,6 @@ export default function Robo({msg}:any) {
   }
   , [msg]);
 
-  
-
-
   return (
 
     <div className='w-[9 0%] flex flex-row justify-start'>

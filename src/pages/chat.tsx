@@ -20,7 +20,7 @@ export default function Chat() {
     
     if(transcript.trim().length  === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true }]);
-    
+    setTranscript("");
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,7 +36,7 @@ export default function Chat() {
           window.speechSynthesis.speak(to_speak);
     }
     setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])
-    setTranscript("");
+    
   };
   return (
     <main className="min-h-screen bg-[#15132f]">
