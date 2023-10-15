@@ -32,7 +32,7 @@ export default function Chat() {
       to_speak.lang = "en-IN";
       to_speak.rate = 0.8;
       to_speak.pitch = 1;
-      to_speak.voice = window.speechSynthesis.getVoices()[0];
+      to_speak.voice = window.speechSynthesis.getVoices()[1];
           window.speechSynthesis.speak(to_speak);
     }
     setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])

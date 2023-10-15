@@ -1,5 +1,6 @@
+"use client";
 import React, { useEffect } from 'react'
-
+import ReactMarkdown from 'react-markdown'
 export default function Robo({msg}:any) {
   msg = "  " + msg;
   const [text, setText] = React.useState("");
@@ -21,7 +22,9 @@ export default function Robo({msg}:any) {
   return (
 
     <div className='w-[90%] flex flex-row justify-start'>
-        <p id="markdown-container" className='bg-[#eee] text-black secondaryFont max-w-[60%] p-4 my-4'>{window.marked?window.marked(text):""}</p>
+        <p id="markdown-container" className='bg-[#eee] text-black secondaryFont max-w-[60%] p-4 my-4'>
+          <ReactMarkdown>{text}</ReactMarkdown>
+        </p>
     </div>
   )
 }
