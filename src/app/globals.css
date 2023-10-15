@@ -29,6 +29,10 @@
 }
 *{
   font-family: "Anurati", sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.primaryFont {
+  font-family: "Anurati", sans-serif;
 }
 .secondaryFont {
   font-family: 'IBM Plex Mono', monospace;
