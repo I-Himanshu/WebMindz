@@ -16,7 +16,7 @@ export default function Chat() {
   ]);
   // console.log(window);
 
-  const sendMsg =async () => {
+  const sendMsg = async () => {
     
     if(transcript.trim().length  === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true }]);
@@ -27,7 +27,14 @@ export default function Chat() {
       body: JSON.stringify({ input: transcript }),
     });
     const data = await res.json();
-    await window.responsiveVoice.speak(data.chat, "English (United Kingdom)");
+    if ( 'speechSynthesis' in window ) {
+      var to_speak = new SpeechSynthesisUtterance(data.chat);
+      to_speak.lang = "en-IN";
+      to_speak.rate = 0.8;
+      to_speak.pitch = 1;
+      to_speak.voice = window.speechSynthesis.getVoices()[0];
+          window.speechSynthesis.speak(to_speak);
+    }
     setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])
     setTranscript("");
   };
