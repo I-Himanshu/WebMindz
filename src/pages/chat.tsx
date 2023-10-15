@@ -10,58 +10,15 @@ export default function Chat() {
   const [listening, setListening] = useState(false);
   const [MSGS, setMSGS] = useState([
     {
-      text: "Hello",
+      text: "Welcome to WebMindZ?",
       isUser: false,
-    },
-    {
-      text: "Hi",
-      isUser: true,
-    },
-    {
-      text: "How are you?",
-      isUser: false,
-    },
-    {
-      text: "I am fine",
-      isUser: true,
-    },
-    {
-      text: "What about you?",
-      isUser: true,
-    },
-    {
-      text: "I am fine too",
-      isUser: false,
-    },
-    {
-      text: "What are you doing?",
-      isUser: false,
-    },
-    {
-      text: "I am doing nothing",
-      isUser: true,
-    },
-    {
-      text: "What about you?",
-      isUser: true,
-    },
-    {
-      text: "I am doing nothing too",
-      isUser: false,
-    },
-    {
-      text: "Ok",
-      isUser: true,
-    },
-    {
-      text: "Bye",
-      isUser: false,
-    },
+    }
   ]);
-  console.log(window);
+  // console.log(window);
 
   const sendMsg =async () => {
-    // if(transcript.trim().length  === 0) return;
+    
+    if(transcript.trim().length  === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true }]);
     setTranscript("");
     
