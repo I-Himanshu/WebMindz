@@ -17,7 +17,10 @@ export default function Chat() {
   // console.log(window);
 
   const sendMsg = async () => {
+    // scroll to bottom
+    const scrollHere = document.getElementById("scrollHere");
     
+
     if(transcript.trim().length  === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true }]);
     setTranscript("");
@@ -41,6 +44,7 @@ export default function Chat() {
       window.speechSynthesis.speak(to_speak);
     }
     setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])
+    scrollHere?.scrollIntoView({ behavior: "smooth" });
     
   };
   return (
@@ -116,7 +120,10 @@ export default function Chat() {
               } else {
                 return <Robo key={index} msg={msg.text} />;
               }
+
             })}
+            {/* Scroll to here on sendMsg */}
+            <div id="scrollHere"></div>
           </div>
           <div className="flex flex-row justify-center bottom-[10px] md:bottom-[15px] pt-4 bg-[#15132f] mx-auto w-[100%] mt-8 relative">
             <div className="relative flex justify-center items-end max-h-[300px] bg-[#080716] px-4 w-[90%] md:w-[85%] chatInputBox overflow-y-scroll">
