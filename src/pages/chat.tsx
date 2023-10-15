@@ -27,9 +27,8 @@ export default function Chat() {
       body: JSON.stringify({ input: transcript }),
     });
     const data = await res.json();
-    if ( 'speechSynthesis' in window ) {
+    if ( 'speechSynthesis' in window ){
       var text = data.chat;
-      // covert markdown to text
       text = text.replace(/#/g, 'hashtag');
       text = text.replace(/\*/g, '');
       text = text.replace(/_/g, '');
@@ -39,7 +38,7 @@ export default function Chat() {
       to_speak.rate = 0.8;
       to_speak.pitch = 1;
       to_speak.voice = window.speechSynthesis.getVoices()[0];
-          window.speechSynthesis.speak(to_speak);
+      window.speechSynthesis.speak(to_speak);
     }
     setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])
     
@@ -134,6 +133,12 @@ export default function Chat() {
                   e.currentTarget.style.height =
                     e.currentTarget.scrollHeight + "px";
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    sendMsg();
+                  }
+                }
+              }
               />
               <button
                 className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2"
