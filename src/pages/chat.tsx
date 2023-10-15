@@ -60,7 +60,21 @@ export default function Chat() {
   ]);
   console.log(window);
 
-
+  const sendMsg =async () => {
+    // if(transcript.trim().length  === 0) return;
+    setMSGS([...MSGS, { text: transcript, isUser: true }]);
+    setTranscript("");
+    
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ input: transcript }),
+    });
+    const data = await res.json();
+    await window?.responsiveVoice?.speak(data.chat, "UK English Male");
+    setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])
+    
+  };
   return (
     <main className="min-h-screen bg-[#15132f]">
       <div className="flex flex-row w-full min-h-screen">
@@ -154,25 +168,7 @@ export default function Chat() {
               />
               <button
                 className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2"
-                onClick={() => {
-                  setMSGS([...MSGS, { text: transcript, isUser: true }]);
-                  const requestOptions = {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ input: transcript }),
-                  };
-                  fetch("/api/chat", requestOptions)
-                    .then((response) => response.json())
-                    .then((data) =>{
-                      console.log(data.chat);
-                    window?.responsiveVoice?.speak(data.chat, "UK English Male");
-
-                      setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])
-                    }
-                    );
-                  setTranscript("");
-                  
-                }}
+                onClick={sendMsg}
               >
                 <i className="fa-solid fa-paper-plane"></i>
               </button>
