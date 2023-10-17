@@ -2,7 +2,7 @@
 import History from "@/components/chat/history";
 import Robo from "@/components/chat/robo";
 import User from "@/components/chat/user";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toggleListening } from "@/components/chat/speech";
 import { log } from "console";
 
@@ -22,8 +22,35 @@ export default function Chat() {
       isUser: false,
     },
   ]);
+  useEffect(() => {
+    const chats = localStorage.getItem("CHATS");
+    if (chats) {
+      setMSGS(JSON.parse(chats));
+    }
+  }, []);
+  
+  useEffect(() => {
+    localStorage.setItem("CHATS", JSON.stringify(MSGS));
+  }
+  , [MSGS]);
+  
+  
+  
   // console.log(window);
+  const speak = (text:any)=>{
+    if ("speechSynthesis" in window && isBlind) {
+      console.log("Speaking");
 
+      var to_speak = new SpeechSynthesisUtterance(text);
+      to_speak.lang = "en-IN";
+      to_speak.rate = 0.8;
+      to_speak.pitch = 1;
+      to_speak.voice = window.speechSynthesis.getVoices()[0];
+
+      window.speechSynthesis.speak(to_speak);
+    }
+
+  }
   const sendMsg = async () => {
     // scroll to bottom
     const scrollHere = document.getElementById("scrollHere");
@@ -37,21 +64,11 @@ export default function Chat() {
       body: JSON.stringify({ input: transcript }),
     });
     const data = await res.json();
-    if ("speechSynthesis" in window && isBlind) {
-      console.log("Speaking");
-      var text = data.chat;
-      text = text.replace(/#/g, "hashtag");
-      text = text.replace(/\*/g, "");
-      text = text.replace(/_/g, "");
-
-      var to_speak = new SpeechSynthesisUtterance(text);
-      to_speak.lang = "en-IN";
-      to_speak.rate = 0.8;
-      to_speak.pitch = 1;
-      to_speak.voice = window.speechSynthesis.getVoices()[0];
-
-      window.speechSynthesis.speak(to_speak);
-    }
+    var text = data.chat;
+    text = text.replace(/#/g, "hashtag");
+    text = text.replace(/\*/g, "");
+    text = text.replace(/_/g, "");
+    speak(text);
     setMSGS([
       ...MSGS,
       ...[
