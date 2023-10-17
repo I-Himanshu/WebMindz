@@ -14,6 +14,8 @@ export default function Robo({msg}:any) {
         i++;
         setTimeout(typeWriter, speed);
       }
+      const scrollHere = document.getElementById("scrollHere");
+      scrollHere?.scrollIntoView({ behavior: "smooth" });
     }
     typeWriter();
     return () => {};

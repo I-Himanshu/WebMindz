@@ -4,24 +4,31 @@ import Robo from "@/components/chat/robo";
 import User from "@/components/chat/user";
 import React, { useState } from "react";
 import { toggleListening } from "@/components/chat/speech";
+import { log } from "console";
 
 export default function Chat() {
   const [transcript, setTranscript] = useState("");
   const [listening, setListening] = useState(false);
+  // get isblind from localstorage if have 
+  // else set isblind to false
+
+  const [isBlind, setIsBlind] = useState(
+    localStorage.getItem("isBlind") === "true" ? true : false
+  );
+
   const [MSGS, setMSGS] = useState([
     {
       text: "Welcome to WebMindZ?",
       isUser: false,
-    }
+    },
   ]);
   // console.log(window);
 
   const sendMsg = async () => {
     // scroll to bottom
     const scrollHere = document.getElementById("scrollHere");
-    
 
-    if(transcript.trim().length  === 0) return;
+    if (transcript.trim().length === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true }]);
     setTranscript("");
     const res = await fetch("/api/chat", {
@@ -30,32 +37,57 @@ export default function Chat() {
       body: JSON.stringify({ input: transcript }),
     });
     const data = await res.json();
-    if ( 'speechSynthesis' in window ){
+    if ("speechSynthesis" in window && isBlind) {
+      console.log("Speaking");
       var text = data.chat;
-      text = text.replace(/#/g, 'hashtag');
-      text = text.replace(/\*/g, '');
-      text = text.replace(/_/g, '');
+      text = text.replace(/#/g, "hashtag");
+      text = text.replace(/\*/g, "");
+      text = text.replace(/_/g, "");
 
       var to_speak = new SpeechSynthesisUtterance(text);
       to_speak.lang = "en-IN";
       to_speak.rate = 0.8;
       to_speak.pitch = 1;
       to_speak.voice = window.speechSynthesis.getVoices()[0];
+
       window.speechSynthesis.speak(to_speak);
     }
-    setMSGS([...MSGS, ...[{ text: transcript, isUser: true },{ text: data.chat, isUser: false }]])
+    setMSGS([
+      ...MSGS,
+      ...[
+        { text: transcript, isUser: true },
+        { text: data.chat, isUser: false },
+      ],
+    ]);
     scrollHere?.scrollIntoView({ behavior: "smooth" });
-    
   };
   return (
     <main className="min-h-screen bg-[#15132f]">
       <div className="flex flex-row w-full min-h-screen">
         <div className="hidden md:flex flex-col items-center md:w-[30%] lg:w-[20%] max-h-screen hover:overflow-y-scroll overflow-y-hidden bg-[#080716] pt-8 px-2 pr-4 hover:pr-2">
+          <div className="isBlind text-white">
+            {/* Make a beautiful toggle button */}
+            <span>
+              IsBlind
+            </span>
+            <input
+              type="checkbox"
+              id="switch"
+              className="hidden"
+              checked={isBlind}
+              onChange={(e) => {
+                setIsBlind(e.target.checked);
+                localStorage.setItem("isBlind", e.target.checked.toString());
+              }}
+            />
+            <label htmlFor="switch" className="switch"></label>
+          </div>
           <div className="flex flex-row justify-between w-full">
             <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
               <b className="mr-4">+</b>
               New Chat
             </p>
+
             <div className="profile">
               <div className="relative group h-full w-full">
                 <div className="w-[50px] h-[50px] rounded-full ">
@@ -120,7 +152,6 @@ export default function Chat() {
               } else {
                 return <Robo key={index} msg={msg.text} />;
               }
-
             })}
             {/* Scroll to here on sendMsg */}
             <div id="scrollHere"></div>
@@ -144,8 +175,7 @@ export default function Chat() {
                   if (e.key === "Enter") {
                     sendMsg();
                   }
-                }
-              }
+                }}
               />
               <button
                 className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2"
