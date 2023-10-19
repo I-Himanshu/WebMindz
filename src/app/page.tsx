@@ -1,9 +1,9 @@
-import Login from "@/pages/login"
-import Landing from "../pages/landing"
-import Options from "@/pages/options"
-import UnitConverter from "@/pages/unitconvertor";
-import Games from "@/pages/games";
-import Chat from "@/pages/chat";
+import Login from "@/PAGE/login"
+import Landing from "../PAGE/landing"
+import Options from "@/PAGE/options"
+import UnitConverter from "@/PAGE/unitconvertor";
+import Games from "@/PAGE/games";
+import Chat from "@/PAGE/chat";
 
 export default function Home() {
   return (
@@ -13,7 +13,8 @@ export default function Home() {
       {/* <Options/> */}
       {/* <UnitConverter/> */}
       {/* <Games/> */}
-      <Chat/>
+      {/* <Chat/> */}
+      hiiiiiiii
     </>
   );
 }
