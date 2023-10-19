@@ -49,7 +49,6 @@ export default function Chat() {
 
       window.speechSynthesis.speak(to_speak);
     }
-
   }
   const sendMsg = async () => {
     // scroll to bottom
@@ -79,6 +78,20 @@ export default function Chat() {
     ]);
     scrollHere?.scrollIntoView({ behavior: "smooth" });
   };
+  window.addEventListener("keydown", (e) => {
+    //  if spacebar is pressed in blind mode
+
+    if (e.key === " " && isBlind) {
+      toggleListening(
+        listening,
+        setListening,
+        transcript,
+        setTranscript
+      )
+    }
+    
+  }
+  );
   return (
     <main className="min-h-screen bg-[#15132f]">
       <div className="flex flex-row w-full min-h-screen">
@@ -165,7 +178,18 @@ export default function Chat() {
               </div>
             </div>
           </header>
-          <div className="w-full overflow-y-scroll mt-[75px] md:mt-0 px-4">
+          <div className="w-full overflow-y-scroll mt-[75px] md:mt-0 px-4" onClick={
+            ()=>{
+            if(isBlind){
+              toggleListening(
+                listening,
+                setListening,
+                transcript,
+                setTranscript
+              )
+            }
+          }
+          }>
             {MSGS.map((msg: any, index: any) => {
               if (msg.isUser) {
                 return <User key={index} msg={msg.text} />;
