@@ -4,4 +4,5 @@ interface Window {
   webkitSpeechRecognition: any;
   responsiveVoice: any;
   marked: any;
+  recognition: any;
 }

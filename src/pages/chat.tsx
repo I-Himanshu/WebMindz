@@ -53,8 +53,9 @@ export default function Chat() {
   }
   const sendMsg = async () => {
     // scroll to bottom
-    const scrollHere = document.getElementById("scrollHere");
 
+    const scrollHere = document.getElementById("scrollHere");
+    if(window.recognition) window.recognition.stop();
     if (transcript.trim().length === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true }]);
     setTranscript("");
@@ -100,7 +101,9 @@ export default function Chat() {
             <label htmlFor="switch" className="switch"></label>
           </div>
           <div className="flex flex-row justify-between w-full">
-            <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
+            <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6" onClick={()=>{
+              setMSGS([]);
+            }}>
               <b className="mr-4">+</b>
               New Chat
             </p>
@@ -203,7 +206,7 @@ export default function Chat() {
               <button
                 className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2"
                 onClick={() => {
-                  toggleListening(
+                  window.recognition  = toggleListening(
                     listening,
                     setListening,
                     transcript,

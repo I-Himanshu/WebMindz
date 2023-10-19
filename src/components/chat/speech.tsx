@@ -35,6 +35,28 @@ export const toggleListening = (listening:any,setListening:any,transcript:any,se
       } else {
         recognition.start();
       }
+      recognition.onerror = (event:any) => {
+        console.log('Error occurred in recognition: ' + event.error);
+      }
+
+      recognition.onaudiostart = (event:any) => {
+        //Fired when the user agent has started to capture audio.
+        console.log('SpeechRecognition.onaudiostart');
+      }
+
+      recognition.onaudioend = (event:any) => {
+        //Fired when the user agent has finished capturing audio.
+        console.log('SpeechRecognition.onaudioend');
+      }
+
+      recognition.onend = (event:any) => {
+        //Fired when the speech recognition service has disconnected.
+        console.log('SpeechRecognition.onend');
+      }
+
+      return recognition;
+
+
     } else {
       alert("Speech recognition is not supported in your browser.");
     }
