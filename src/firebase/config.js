@@ -1,15 +1,23 @@
 import { initializeApp, getApps } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAQG8CbrMQkK2ArUETJCrIj78k88j4c9eY",
-    authDomain: "webmindz-87d42.firebaseapp.com",
-    projectId: "webmindz-87d42",
-    storageBucket: "webmindz-87d42.appspot.com",
-    messagingSenderId: "1091374651304",
-    appId: "1:1091374651304:web:d9df243f637a481666ef9d"
+  apiKey: "AIzaSyD3vrHMLYhCoMM31-VTzsCHH9SKJr0qalk",
+  authDomain: "fbwebmindz.firebaseapp.com",
+  projectId: "fbwebmindz",
+  storageBucket: "fbwebmindz.appspot.com",
+  messagingSenderId: "980853762969",
+  appId: "1:980853762969:web:2d3a73239c2a0657724108"
 };
 
+
 let app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-const auth = app.auth();
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+export { auth, db, storage };
 export default app;
-export { auth };

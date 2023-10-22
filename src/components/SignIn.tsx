@@ -1,9 +1,19 @@
-import React from 'react'
+// components/SignIn.tsx
 
-function SignIn() {
+import React from 'react';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {auth} from "../firebase/config"
+const SignIn = () => {
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+
   return (
-    <div>SignIn</div>
-  )
-}
+    <div>
+      <button onClick={signInWithGoogle}>Sign in with Google</button>
+    </div>
+  );
+};
 
-export default SignIn
+export default SignIn;

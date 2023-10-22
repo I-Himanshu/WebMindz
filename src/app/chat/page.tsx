@@ -5,6 +5,9 @@ import Chat from '@/(PAGE)/chat'
 
 export default function ChatPage() {
     return (
-        <Chat />
+        // <Chat />
+        <div>
+            <Chat />
+        </div>
     )
 }
