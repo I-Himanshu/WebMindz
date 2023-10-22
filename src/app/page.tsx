@@ -13,7 +13,6 @@ export default function Home() {
       {/* <Options/> */}
       {/* <UnitConverter/> */}
       {/* <Games/> */}
-      <div className="bg-[#4488ff] h-screen"></div>
      <Chat />
      </>
   );
