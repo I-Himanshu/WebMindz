@@ -14,7 +14,6 @@ export default function Home() {
       {/* <UnitConverter/> */}
       {/* <Games/> */}
       {/* <Chat/> */}
-      hiiiiiiii
     </>
   );
 }
