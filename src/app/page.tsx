@@ -1,19 +1,20 @@
-import Login from "@/(PAGE)/login"
-import Landing from "../(PAGE)/landing"
-import Options from "@/(PAGE)/options"
-import UnitConverter from "@/(PAGE)/unitconvertor";
-import Games from "@/(PAGE)/games";
-import Chat from "@/(PAGE)/chat";
+import Login from "@/app/layouts/login"
+import Landing from "./layouts/landing"
+import Options from "@/app/layouts/options"
+import UnitConverter from "@/app/layouts/unitconvertor";
+import Games from "@/app/layouts/games";
+import Chat from "@/app/layouts/Chat";
 
 export default function Home() {
   return (
     <>
       {/* <Landing/> */}
-      {/* <Login/> */}
+      {/* <Login/>   */}
       {/* <Options/> */}
       {/* <UnitConverter/> */}
       {/* <Games/> */}
-      <Chat/>
-    </>
+      <div className="bg-[#4488ff] h-screen"></div>
+     <Chat />
+     </>
   );
 }

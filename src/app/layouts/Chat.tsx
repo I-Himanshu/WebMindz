@@ -1,21 +1,18 @@
 "use client";
-import History from "@/components/chat/history";
-import Robo from "@/components/chat/robo";
-import User from "@/components/chat/user";
+import History from "../../components/chat/history";
+import Robo from "../../components/chat/robo";
+import User from "../../components/chat/user";
 import React, { useEffect, useState } from "react";
-import { toggleListening } from "@/components/chat/speech";
+import { toggleListening } from "../../components/chat/speech";
 import { log } from "console";
-
 export default function Chat() {
   const [transcript, setTranscript] = useState("");
   const [listening, setListening] = useState(false);
   // get isblind from localstorage if have 
   // else set isblind to false
-
   const [isBlind, setIsBlind] = useState(
     localStorage.getItem("isBlind") === "true" ? true : false
   );
-
   const [MSGS, setMSGS] = useState([
     {
       text: "Welcome to WebMindZ?",
@@ -40,21 +37,17 @@ export default function Chat() {
   const speak = (text:any)=>{
     if ("speechSynthesis" in window && isBlind) {
       console.log("Speaking");
-
       var to_speak = new SpeechSynthesisUtterance(text);
       to_speak.lang = "en-IN";
       to_speak.rate = 0.8;
       to_speak.pitch = 1;
       to_speak.voice = window.speechSynthesis.getVoices()[0];
-
       window.speechSynthesis.speak(to_speak);
     }
   }
   const sendMsg = async () => {
     // scroll to bottom
-
     const scrollHere = document.getElementById("scrollHere");
-    if(window.recognition) window.recognition.stop();
     if (transcript.trim().length === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true }]);
     setTranscript("");
@@ -78,20 +71,6 @@ export default function Chat() {
     ]);
     scrollHere?.scrollIntoView({ behavior: "smooth" });
   };
-  window.addEventListener("keydown", (e) => {
-    //  if spacebar is pressed in blind mode
-
-    if (e.key === " " && isBlind) {
-      toggleListening(
-        listening,
-        setListening,
-        transcript,
-        setTranscript
-      )
-    }
-    
-  }
-  );
   return (
     <main className="min-h-screen bg-[#15132f]">
       <div className="flex flex-row w-full min-h-screen">
@@ -114,13 +93,10 @@ export default function Chat() {
             <label htmlFor="switch" className="switch"></label>
           </div>
           <div className="flex flex-row justify-between w-full">
-            <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6" onClick={()=>{
-              setMSGS([]);
-            }}>
+            <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
               <b className="mr-4">+</b>
               New Chat
             </p>
-
             <div className="profile">
               <div className="relative group h-full w-full">
                 <div className="w-[50px] h-[50px] rounded-full ">
@@ -178,18 +154,7 @@ export default function Chat() {
               </div>
             </div>
           </header>
-          <div className="w-full overflow-y-scroll mt-[75px] md:mt-0 px-4" onClick={
-            ()=>{
-            if(isBlind){
-              toggleListening(
-                listening,
-                setListening,
-                transcript,
-                setTranscript
-              )
-            }
-          }
-          }>
+          <div className="w-full overflow-y-scroll mt-[75px] md:mt-0 px-4">
             {MSGS.map((msg: any, index: any) => {
               if (msg.isUser) {
                 return <User key={index} msg={msg.text} />;
@@ -230,7 +195,7 @@ export default function Chat() {
               <button
                 className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2"
                 onClick={() => {
-                  window.recognition  = toggleListening(
+                  toggleListening(
                     listening,
                     setListening,
                     transcript,

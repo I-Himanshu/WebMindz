@@ -1,6 +1,6 @@
 import GameBox from '@/components/games/gamebox'
 import React from 'react'
-import data from '../helpers/Games.json';
+import data from '../../helpers/Games.json';
 
 export default function Games() {
   return (
