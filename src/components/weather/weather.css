@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Finlandica:wght@400;500;700&family=Kavoon&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Finlandica', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Dusk             5,6
+Early morning    7,8
+Morning          9,10,11
+Late morning     11
+Midday           12
+Early afternoon  13,14,15
+Late afternoon   16
+Dawn             17,18 
+Early evening    19
+Evening          20
+Night            21,22,23
+Midnight         24
+Late night       1,2
+Witching Hour    3,4 */
+
+.bg0,
+.bt12 {
+  background: #012459;
+  background: linear-gradient(-5deg, #012459 0%, #001322 100%);
+}
+
+.bg1,
+.bt13 {
+  background: #003972;
+  background: linear-gradient(-5deg, #003972 0%, #001322 100%);
+}
+
+.bg2,
+.bt14 {
+  background: #003972;
+  background: linear-gradient(-5deg, #003972 0%, #001322 100%);
+}
+
+.bg3,
+.bt15 {
+  background: #004372;
+  background: linear-gradient(-5deg, #004372 0%, #00182b 100%);
+}
+
+.bg4,
+.bt16 {
+  background: #004372;
+  background: linear-gradient(-5deg, #004372 0%, #011d34 100%);
+}
+
+.bg5,
+.bt17 {
+  background: #016792;
+  background: linear-gradient(-5deg, #016792 0%, #00182b 100%);
+}
+
+.bg6,
+.bt18 {
+  background: #07729f;
+  background: linear-gradient(-5deg, #07729f 0%, #042c47 100%);
+}
+
+.bg7,
+.bt19 {
+  background: #12a1c0;
+  background: linear-gradient(-5deg, #12a1c0 0%, #07506e 100%);
+}
+
+.bg8,
+.bt20 {
+  background: #74d4cc;
+  background: linear-gradient(-5deg, #74d4cc 0%, #1386a6 100%);
+}
+
+.bg9,
+.bt21 {
+  background: #efeebc;
+  background: linear-gradient(-5deg, #efeebc 0%, #61d0cf 100%);
+}
+
+.bg10,
+.bt22 {
+  background: #fee154;
+  background: linear-gradient(-5deg, #fee154 0%, #a3dec6 100%);
+}
+
+.bg11,
+.bt23 {
+  background: #fdc352;
+  background: linear-gradient(-5deg, #fdc352 0%, #e8ed92 100%);
+}
+
+.bg12,
+.bt0 {
+  background: #ffac6f;
+  background: linear-gradient(-5deg, #ffac6f 0%, #ffe467 100%);
+}
+
+.bg13,
+.bt1 {
+  background: #fda65a;
+  background: linear-gradient(-5deg, #fda65a 0%, #ffe467 100%);
+}
+
+.bg14,
+.bt2 {
+  background: #fd9e58;
+  background: linear-gradient(-5deg, #fd9e58 0%, #ffe467 100%);
+}
+
+.bg15,
+.bt3 {
+  background: #f18448;
+  background: linear-gradient(-5deg, #f18448 0%, #ffd364 100%);
+}
+
+.bg16,
+.bt4 {
+  background: #f06b7e;
+  background: linear-gradient(-5deg, #f06b7e 0%, #f9a856 100%);
+}
+
+.bg17,
+.bt5 {
+  background: #ca5a92;
+  background: linear-gradient(-5deg, #ca5a92 0%, #f4896b 100%);
+}
+
+.bg18,
+.bt6 {
+  background: #5b2c83;
+  background: linear-gradient(-5deg, #5b2c83 0%, #d1628b 100%);
+}
+
+.bg19,
+.bt7 {
+  background: #371a79;
+  background: linear-gradient(-5deg, #371a79 0%, #713684 100%);
+}
+
+.bg20,
+.bt8 {
+  background: #28166b;
+  background: linear-gradient(-5deg, #28166b 0%, #45217c 100%);
+}
+
+.bg21,
+.bt9 {
+  background: #192861;
+  background: linear-gradient(-5deg, #192861 0%, #372074 100%);
+}
+
+.bg22,
+.bt10 {
+  background: #040b3c;
+  background: linear-gradient(-5deg, #040b3c 0%, #233072 100%);
+}
+
+.bg23,
+.bt11 {
+  background: #040b3c;
+  background: linear-gradient(-5deg, #040b3c 0%, #012459 100%);
+}
+
+
+.text12 {
+  background: #012459;
+  background: linear-gradient(-5deg, #012459 0%, #001322 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text13 {
+  background: #003972;
+  background: linear-gradient(-5deg, #003972 0%, #001322 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text14 {
+  background: #003972;
+  background: linear-gradient(-5deg, #003972 0%, #001322 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text15 {
+  background: #004372;
+  background: linear-gradient(-5deg, #004372 0%, #00182b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text16 {
+  background: #004372;
+  background: linear-gradient(-5deg, #004372 0%, #011d34 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text17 {
+  background: #016792;
+  background: linear-gradient(-5deg, #016792 0%, #00182b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text18 {
+  background: #07729f;
+  background: linear-gradient(-5deg, #07729f 0%, #042c47 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text19 {
+  background: #12a1c0;
+  background: linear-gradient(-5deg, #12a1c0 0%, #07506e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text20 {
+  background: #74d4cc;
+  background: linear-gradient(-5deg, #74d4cc 0%, #1386a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text21 {
+  background: #efeebc;
+  background: linear-gradient(-5deg, #efeebc 0%, #61d0cf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text22 {
+  background: #fee154;
+  background: linear-gradient(-5deg, #fee154 0%, #a3dec6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text23 {
+  background: #fdc352;
+  background: linear-gradient(-5deg, #fdc352 0%, #e8ed92 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text0 {
+  background: #ffac6f;
+  background: linear-gradient(-5deg, #ffac6f 0%, #ffe467 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text1 {
+  background: #fda65a;
+  background: linear-gradient(-5deg, #fda65a 0%, #ffe467 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text2 {
+  background: #fd9e58;
+  background: linear-gradient(-5deg, #fd9e58 0%, #ffe467 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text3 {
+  background: #f18448;
+  background: linear-gradient(-5deg, #f18448 0%, #ffd364 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text4 {
+  background: #f06b7e;
+  background: linear-gradient(-5deg, #f06b7e 0%, #f9a856 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text5 {
+  background: #ca5a92;
+  background: linear-gradient(-5deg, #ca5a92 0%, #f4896b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text6 {
+  background: #5b2c83;
+  background: linear-gradient(-5deg, #5b2c83 0%, #d1628b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text7 {
+  background: #371a79;
+  background: linear-gradient(-5deg, #371a79 0%, #713684 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text8 {
+  background: #28166b;
+  background: linear-gradient(-5deg, #28166b 0%, #45217c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text9 {
+  background: #192861;
+  background: linear-gradient(-5deg, #192861 0%, #372074 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text10 {
+  background: #040b3c;
+  background: linear-gradient(-5deg, #040b3c 0%, #233072 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}
+
+.text11 {
+  background: #040b3c;
+  background: linear-gradient(-5deg, #040b3c 0%, #012459 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Finlandica', sans-serif;
+  font-family: 'Kavoon', cursive;
+}

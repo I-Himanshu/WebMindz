@@ -4,6 +4,7 @@ import Options from "@/app/layouts/options"
 import UnitConverter from "@/app/layouts/unitconvertor";
 import Games from "@/app/layouts/games";
 import Chat from "@/app/layouts/Chat";
+import Weather from "./layouts/weather";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       {/* <Options/> */}
       {/* <UnitConverter/> */}
       {/* <Games/> */}
-     <Chat />
+     {/* <Chat /> */}
+     <Weather/>
      </>
   );
 }
