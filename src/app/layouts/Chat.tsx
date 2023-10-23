@@ -4,10 +4,9 @@ import Robo from "../../components/chat/robo";
 import User from "../../components/chat/user";
 import React, { useEffect, useState } from "react";
 import { toggleListening } from "../../components/chat/speech";
-import { log } from "console";
 export default function Chat() {
   const [transcript, setTranscript] = useState("");
-  const [listening, setListening] = useState(false);
+  const [isAutoEnd, setIsAutoEnd] = useState(false);
   // get isblind from localstorage if have 
   // else set isblind to false
   const [isBlind, setIsBlind] = useState(
@@ -19,6 +18,9 @@ export default function Chat() {
       isUser: false,
     },
   ]);
+  useEffect(()=>{
+    if(transcript)sendMsg();
+  },[isAutoEnd])
   useEffect(() => {
     const chats = localStorage.getItem("CHATS");
     if (chats) {
@@ -51,6 +53,10 @@ export default function Chat() {
     if (transcript.trim().length === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true }]);
     setTranscript("");
+    await toggleListening(
+      setTranscript, 
+      setIsAutoEnd,true
+    );
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -58,9 +64,9 @@ export default function Chat() {
     });
     const data = await res.json();
     var text = data.chat;
-    text = text.replace(/#/g, "hashtag");
-    text = text.replace(/\*/g, "");
-    text = text.replace(/_/g, "");
+    text = text?.replace(/#/g, "hashtag");
+    text = text?.replace(/\*/g, "");
+    text = text?.replace(/_/g, "");
     speak(text);
     setMSGS([
       ...MSGS,
@@ -69,6 +75,7 @@ export default function Chat() {
         { text: data.chat, isUser: false },
       ],
     ]);
+    //setIsAutoEnd(false);
     scrollHere?.scrollIntoView({ behavior: "smooth" });
   };
   return (
@@ -194,13 +201,15 @@ export default function Chat() {
               </button>
               <button
                 className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2"
-                onClick={() => {
-                  toggleListening(
-                    listening,
-                    setListening,
-                    transcript,
-                    setTranscript
+                onClick={ () => {
+                 
+                    toggleListening(
+                    
+                    setTranscript,
+                    setIsAutoEnd
                   );
+                  
+                  
                 }}
               >
                 <i className="fa-solid fa-microphone"></i>

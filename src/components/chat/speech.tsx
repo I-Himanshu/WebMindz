@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
   
-export const toggleListening = (listening:any,setListening:any,transcript:any,setTranscript:any) => {
+export const toggleListening = ( setTranscript:any,setIsAutoEnd:any,pauseAudio:boolean  = false) => {
   // vibrate for 3s
     navigator.vibrate(3000);
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
@@ -13,15 +13,20 @@ export const toggleListening = (listening:any,setListening:any,transcript:any,se
       recognition.lang = 'en-US';
       recognition.maxAlternatives = 1;
 
-
+      recognition.start();
+      if(pauseAudio){
+        recognition.stop();
+        return;
+      }
       recognition.onstart = () => {
         console.log('Listening!');
-        setListening(true);
       };
-
+      recognition.onspeechend = () => {
+        recognition.stop();
+        console.log("Speech recognition has stopped.");
+      };
       recognition.onend = () => {
         console.log('Stopped listening.');
-        setListening(false);
       };
 
       recognition.onresult = (event:any) => {
@@ -32,11 +37,7 @@ export const toggleListening = (listening:any,setListening:any,transcript:any,se
         console.log(interimTranscript);
       };
 
-      if (listening) {
-        recognition.stop();
-      } else {
-        recognition.start();
-      }
+      
       recognition.onerror = (event:any) => {
         console.log('Error occurred in recognition: ' + event.error);
       }
@@ -44,6 +45,10 @@ export const toggleListening = (listening:any,setListening:any,transcript:any,se
       recognition.onaudiostart = (event:any) => {
         //Fired when the user agent has started to capture audio.
         console.log('SpeechRecognition.onaudiostart');
+        setTimeout(()=>{
+          recognition.stop();
+          setIsAutoEnd(true);
+        },15000)
       }
 
       recognition.onaudioend = (event:any) => {
