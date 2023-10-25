@@ -37,7 +37,7 @@ export default function MobileTable({ data }) {
   return (
     <>
       <div className="flex md:hidden flex-col w-full z-20">
-        <p className="text-white/70 text-sm font-normal">Next 5 Days</p>
+        <p className="blueGradText text-sm font-normal">Next 5 Days</p>
         <table className="w-full border-separate border-spacing-x-0 border-spacing-y-3">
           <tbody>
             {getDailyComponent(data[1])}

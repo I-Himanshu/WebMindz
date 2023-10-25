@@ -88,9 +88,9 @@ export default function Chat({ role}: { role: any}) {
         <div className="hidden md:flex flex-col items-center md:w-[30%] lg:w-[20%] max-h-screen hover:overflow-y-scroll overflow-y-hidden bg-[#080716] pt-8 px-2 pr-4 hover:pr-2">
           <div className="isBlind text-white">
             {/* Make a beautiful toggle button */}
-            <span>
+            {/* <span>
               IsBlind
-            </span>
+            </span> */}
             <input
               type="checkbox"
               id="switch"
@@ -103,7 +103,7 @@ export default function Chat({ role}: { role: any}) {
             />
             <label htmlFor="switch" className="switch">
               {
-                isBlind?<i className="fa-solid fa-eye-slash"></i>:<i className="fa-solid fa-eye"></i>
+                isBlind?<i className="cursor-pointer transition-all p-2 text-xl fa-solid fa-eye blueGradText"></i>:<i className="cursor-pointer transition-all p-2 text-xl fa-solid fa-eye"></i>
               }
             </label>
           </div>

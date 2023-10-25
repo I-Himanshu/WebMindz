@@ -4,7 +4,7 @@ export default function Logo() {
   return (
     <>
         <div className={`absolute top-5 left-[50%] translate-x-[-50%] md:translate-x-0 md:left-5 z-20 text-white text-lg md:text-2xl text${hours} font-black flex flow-row items-center`}>
-           <i className="fa-solid fa-cloud-moon"></i> <p className='ml-2'>MaggiWeather </p> 
+           <i className="fa-solid fa-cloud-moon blueGradText"></i> <p className='ml-2 blueGradText'>WebMindz Weather </p> 
         </div>
     </>
   )
