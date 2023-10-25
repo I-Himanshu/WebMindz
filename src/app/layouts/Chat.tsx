@@ -11,6 +11,8 @@ export default function Chat({ role}: { role: any}) {
   const [isAutoEnd, setIsAutoEnd] = useState(false);
 
   const roleData = ROLES[role];
+  console.log(roleData);
+
 
 
   const [isBlind, setIsBlind] = useState(
@@ -26,17 +28,17 @@ export default function Chat({ role}: { role: any}) {
   useEffect(()=>{
     if(transcript)sendMsg();
   },[isAutoEnd])
-  useEffect(() => {
-    const chats = localStorage.getItem("CHATS");
-    if (chats) {
-      setMSGS(JSON.parse(chats));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const chats = localStorage.getItem("CHATS");
+  //   if (chats) {
+  //     setMSGS(JSON.parse(chats));
+  //   }
+  // }, []);
   
-  useEffect(() => {
-    localStorage.setItem("CHATS", JSON.stringify(MSGS));
-  }
-  , [MSGS]);
+  // useEffect(() => {
+  //   localStorage.setItem("CHATS", JSON.stringify(MSGS));
+  // }
+  // , [MSGS]);
 
   const speak = (text:any)=>{
     if ("speechSynthesis" in window && isBlind) {
