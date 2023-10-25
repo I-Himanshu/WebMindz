@@ -67,7 +67,7 @@ export default function Chat({ role}: { role: any}) {
       body: JSON.stringify({ input: transcript, role: role }),
     });
     const data = await res.json();
-    var text = data.chat;
+    var text = String(data.chat);
     text = text?.replace(/#/g, "hashtag");
     text = text?.replace(/\*/g, "");
     text = text?.replace(/_/g, "");

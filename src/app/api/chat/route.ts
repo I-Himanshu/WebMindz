@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 const CODES = {
     "doctor": "clo5xbzdg0001mb087q25c9zo",
-    "default": "clnpzydgw0001mo08n9kwq6ia"
+    "default":"clnpzydgw0001mo08n9kwq6ia"
 }
 export async function POST(request: Request) {
     
@@ -20,5 +20,6 @@ export async function POST(request: Request) {
     });
 
     const data = await response.json();
-    return NextResponse.json({ chat: data });
+    console.log(data);
+    return NextResponse.json({ chat: String(data) });
 }
