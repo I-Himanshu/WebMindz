@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <>
       {/* <Landing/> */}
-      {/* <Login/>   */}
+      <Login/>  
       {/* <Options/> */}
       {/* <UnitConverter/> */}
       {/* <Games/> */}
      {/* <Chat /> */}
-     <Weather/>
+     {/* <Weather/> */}
      {/* <ChatOptions/> */}
      </>
   );
