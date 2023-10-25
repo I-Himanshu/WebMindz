@@ -1,5 +1,5 @@
 import React from 'react'
-import GetIcon from '../helpers/GetIcon';
+import GetIcon from "../../helpers/GetIcon" 
 
 export default function MainTemp({temp,desc,city}) {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];

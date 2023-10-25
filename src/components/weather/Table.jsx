@@ -1,5 +1,5 @@
 import React from "react";
-import GetIcon from "../helpers/GetIcon";
+import GetIcon from "../../helpers/GetIcon";
 
 function getDateComponent(dt) {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
