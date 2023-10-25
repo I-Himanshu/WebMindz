@@ -4,17 +4,22 @@ import Robo from "../../components/chat/robo";
 import User from "../../components/chat/user";
 import React, { useEffect, useState } from "react";
 import { toggleListening } from "../../components/chat/speech";
-export default function Chat() {
+import { ROLES } from "@/components/chat/roles";
+
+export default function Chat({ role}: { role: any}) {
   const [transcript, setTranscript] = useState("");
   const [isAutoEnd, setIsAutoEnd] = useState(false);
-  // get isblind from localstorage if have 
-  // else set isblind to false
+
+  const roleData = ROLES[role];
+
+
   const [isBlind, setIsBlind] = useState(
     localStorage.getItem("isBlind") === "true" ? true : false
   );
+  
   const [MSGS, setMSGS] = useState([
     {
-      text: "Welcome to WebMindZ?",
+      text: roleData.welcome_message,
       isUser: false,
     },
   ]);
@@ -32,10 +37,7 @@ export default function Chat() {
     localStorage.setItem("CHATS", JSON.stringify(MSGS));
   }
   , [MSGS]);
-  
-  
-  
-  // console.log(window);
+
   const speak = (text:any)=>{
     if ("speechSynthesis" in window && isBlind) {
       console.log("Speaking");
@@ -60,7 +62,7 @@ export default function Chat() {
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ input: transcript }),
+      body: JSON.stringify({ input: transcript, role: role }),
     });
     const data = await res.json();
     var text = data.chat;
@@ -97,7 +99,11 @@ export default function Chat() {
                 localStorage.setItem("isBlind", e.target.checked.toString());
               }}
             />
-            <label htmlFor="switch" className="switch"></label>
+            <label htmlFor="switch" className="switch">
+              {
+                isBlind?<i className="fa-solid fa-eye-slash"></i>:<i className="fa-solid fa-eye"></i>
+              }
+            </label>
           </div>
           <div className="flex flex-row justify-between w-full">
             <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
@@ -177,9 +183,7 @@ export default function Chat() {
               <textarea
                 className="w-[100%] min-h-[60px] text-white resize-none secondaryFont px-2 py-4 bg-[#080716] border-0 outline-none hover:border-none hover:outline-none rounded-lg chatInputTextarea"
                 placeholder="Type your message..."
-                // set row according to content in it
                 rows={1}
-                // set min height
                 value={transcript}
                 onInput={(e) => {
                   setTranscript(e.currentTarget.value);
