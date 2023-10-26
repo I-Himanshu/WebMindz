@@ -1,17 +1,9 @@
 "use client"
 import React from 'react'
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import {auth } from "../../firebase/config"
-function Login() {
-    const signInWithGoogle = () => {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider);
-    };
+import Login from "../layouts/login"
+function login() {
     return (
-        
-        <div>
-            <button onClick={signInWithGoogle}>Sign in with Google</button>
-        </div>
+        <Login />
     )
 }
 

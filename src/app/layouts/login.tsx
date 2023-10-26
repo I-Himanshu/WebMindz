@@ -1,5 +1,11 @@
 // import "../../app/global.css";
+import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
+import { auth } from "../../firebase/config";
 export default function Login() {
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+};
   return (
     <main className="flex min-h-screen flex-col lg:flex-row items-center justify-center lg:justify-between w-full lg:px-40 relative">
       <div className="bg1 absolute"></div>
@@ -11,7 +17,7 @@ export default function Login() {
           <p className="mt-1">Unlock the Gateway to Your Digital Realm with WebMindz.</p>
 
           <form className="flex flex-col mt-7 text-lg">
-            <div className="input-container flex-col flex">
+            {/* <div className="input-container flex-col flex">
               <label className="font-semibold secondaryFont text-[#666] my-2" htmlFor="email">Your email</label>
               <input className=" border-b-2 secondaryFont border-[#06bcfb] outline-none" type="email" id="email" placeholder="Enter your email" />
             </div> 
@@ -20,7 +26,13 @@ export default function Login() {
               <input className=" border-b-2 secondaryFont border-[#06bcfb] outline-none" type="password" id="password" placeholder="Enter your password" /> 
             </div>
             
-            <button className="text-white secondaryFont font-semibold mt-10 p-3 rounded-md blueGrad duration-[0.5ms] hover:scale-105">Continue</button>
+            <button className="text-white secondaryFont font-semibold mt-10 p-3 rounded-md blueGrad duration-[0.5ms] hover:scale-105">Continue</button> */}
+
+            {/* Sign In With google */}
+            <button className="mt-10 p-3 rounded-md blueGrad duration-[0.5ms] hover:scale-105" onClick={signInWithGoogle}>
+              <img className="w-6 mr-2" src="https://cdn.iconscout.com/icon/free/png-256/google-470-675827.png" alt="" />
+              Sign In With Google
+            </button>
           </form>
         </div>
         </div>
