@@ -1,4 +1,5 @@
 import IconBox from "@/components/options/box";
+import Link from "next/link";
 
 export default function Options() {
   return (
@@ -9,10 +10,23 @@ export default function Options() {
       </div>
       <div className="container mx-auto mt-7 md:mt-16">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <IconBox iconClass="fa-solid fa-message" text="Chat" />
-        <IconBox iconClass="fa-solid fa-newspaper" text="News" />
-        <IconBox iconClass="fa-solid fa-cloud" text="Weather" />
-        <IconBox iconClass="fa-solid fa-gamepad" text="Games" />
+        <Link href={"/chat"}>
+          <IconBox iconClass="fa-solid fa-message" text="Chat" />
+        </Link>
+
+        <Link href={"/news"}>
+          <IconBox iconClass="fa-solid fa-newspaper" text="News" />
+        </Link>
+
+        <Link href={"/weather"}>
+          <IconBox iconClass="fa-solid fa-cloud" text="Weather" />
+        </Link>
+
+        <Link href={"/games"}>
+          <IconBox iconClass="fa-solid fa-gamepad" text="Games" />
+        </Link>
+        
+        
         <IconBox iconClass="fa-solid fa-language" text="Translator" />
         <IconBox iconClass="fa-solid fa-scale-unbalanced-flip" text="Unit Convertor" />
         <IconBox iconClass="fa-solid fa-file" text="File Drop" />

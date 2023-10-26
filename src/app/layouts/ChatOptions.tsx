@@ -1,4 +1,5 @@
 import IconBox from "@/components/options/box";
+import Link from "next/link";
 
 export default function ChatOptions() {
   return (
@@ -9,12 +10,12 @@ export default function ChatOptions() {
       </div>
       <div className="container mx-auto mt-7 md:mt-16">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <IconBox iconClass="fa-solid fa-user-doctor" text="Doctor" />
-        <IconBox iconClass="fa-solid fa-scale-balanced" text="Lawyer" />
-        <IconBox iconClass="fa-solid fa-graduation-cap" text="Student" />
-        <IconBox iconClass="fa-solid fa-chalkboard-user" text="Teacher" />
-        <IconBox iconClass="fa-solid fa-laptop-code" text="Developer" />
-        <IconBox iconClass="fa-solid fa-robot" text="Bot" />
+        <Link href={"/chat/doctor/new"}> <IconBox iconClass="fa-solid fa-user-doctor" text="Doctor" /> </Link>
+        <Link href={"/chat/lawyer/new"}> <IconBox iconClass="fa-solid fa-scale-balanced" text="Lawyer" /> </Link>
+        <Link href={"/chat/student/new"}> <IconBox iconClass="fa-solid fa-graduation-cap" text="Student" /> </Link>
+        <Link href={"/chat/teacher/new"}> <IconBox iconClass="fa-solid fa-chalkboard-user" text="Teacher" /> </Link>
+        <Link href={"/chat/developer/new"}> <IconBox iconClass="fa-solid fa-laptop-code" text="Developer" /> </Link>
+        <Link href={"/chat/bot/new"}> <IconBox iconClass="fa-solid fa-robot" text="Bot" /> </Link>
        </div>
       </div>
     </main>
