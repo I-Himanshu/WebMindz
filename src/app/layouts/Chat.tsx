@@ -5,6 +5,7 @@ import User from "../../components/chat/user";
 import React, { useEffect, useState } from "react";
 import { toggleListening } from "../../components/chat/speech";
 import { ROLES } from "@/components/chat/roles";
+import Link from "next/link";
 
 export default function Chat({ role,ID}: { role: any,ID:any}) {
   const [transcript, setTranscript] = useState("");
@@ -33,15 +34,17 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
     const chats = JSON.parse(localStorage.getItem("CHATS"))||{};
     // if wangt to check if chats have key ROLE.ID then setMSGS else setMSGS to roleData.welcome_message
     if (!(Object.keys(chats).length === 0 && chats.constructor === Object)) {
-    if(chats[`${role}.${ID}`]) setMSGS(chats[`${role}.${ID}`]);
+      if (chats[role] && chats[role][ID]) {
+        setMSGS(chats[role][ID]);
+      }
     }
   }, []);
   
   useEffect(() => {
     // update localstorage
     const chats = JSON.parse(localStorage.getItem("CHATS"))||{};
-    chats[`${role}.${ID}`] = MSGS;
-    console.log("UPDATE:: ",chats[`${role}.${ID}`]);
+    chats[role] = chats[role] || {};
+    chats[role][ID] = MSGS;
     localStorage.setItem("CHATS", JSON.stringify(chats));
   }
   , [MSGS]);
@@ -114,7 +117,12 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
             </label>
           </div>
           <div className="flex flex-row justify-between w-full">
-            <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6">
+            <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6" onClick={
+              ()=>{
+                (localStorage.getItem("CHATS")&&JSON.parse(localStorage.getItem("CHATS"))[role])?<Link href={`/chat/${role}/${Object.keys(JSON.parse(localStorage.getItem("CHATS"))[role]).length+1}`}></Link>:<Link href={`/chat/${role}/1`}></Link>
+              }
+            
+            }>
               <b className="mr-4">+</b>
               New Chat
             </p>
@@ -139,15 +147,14 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
             </div>
           </div>
 
-          <History ID={1} />
-          <History ID={2} />
-          <History ID={3} />
-          <History ID={4} />
-          <History ID={5} />
-          <History ID={6} />
-          <History ID={7} />
-          <History ID={8} />
-          <History ID={9} />
+          <div>
+              {
+                localStorage.getItem("CHATS")?Object.keys(JSON.parse(localStorage.getItem("CHATS"))[role]||{}).map((id:any,index:any)=>{
+                  return <History key={index} ID={id} />
+                }):<></>
+              }
+          </div>
+
         </div>
         <div className="flex flex-col px-0 pb-10 md:px-0 justify-end items-center w-full md:w-[70%] lg:w-[80%] max-h-screen overflow-y-scroll">
           <header className="fixed top-0 left-0 w-full py-4 px-2 bg-[#080716] flex md:hidden justify-end items-center">
