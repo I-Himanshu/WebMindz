@@ -207,6 +207,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
+                    e.preventDefault();
                     sendMsg();
                   }
                 }}
