@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { toggleListening } from "../../components/chat/speech";
 import { ROLES } from "@/components/chat/roles";
 
-export default function Chat({ role}: { role: any}) {
+export default function Chat({ role,ID}: { role: any,ID:any}) {
   const [transcript, setTranscript] = useState("");
   const [isAutoEnd, setIsAutoEnd] = useState(false);
 
@@ -28,17 +28,23 @@ export default function Chat({ role}: { role: any}) {
   useEffect(()=>{
     if(transcript)sendMsg();
   },[isAutoEnd])
-  // useEffect(() => {
-  //   const chats = localStorage.getItem("CHATS");
-  //   if (chats) {
-  //     setMSGS(JSON.parse(chats));
-  //   }
-  // }, []);
+  useEffect(() => {
+    
+    const chats = JSON.parse(localStorage.getItem("CHATS"))||{};
+    // if wangt to check if chats have key ROLE.ID then setMSGS else setMSGS to roleData.welcome_message
+    if (!(Object.keys(chats).length === 0 && chats.constructor === Object)) {
+    if(chats[`${role}.${ID}`]) setMSGS(chats[`${role}.${ID}`]);
+    }
+  }, []);
   
-  // useEffect(() => {
-  //   localStorage.setItem("CHATS", JSON.stringify(MSGS));
-  // }
-  // , [MSGS]);
+  useEffect(() => {
+    // update localstorage
+    const chats = JSON.parse(localStorage.getItem("CHATS"))||{};
+    chats[`${role}.${ID}`] = MSGS;
+    console.log("UPDATE:: ",chats[`${role}.${ID}`]);
+    localStorage.setItem("CHATS", JSON.stringify(chats));
+  }
+  , [MSGS]);
 
   const speak = (text:any)=>{
     if ("speechSynthesis" in window && isBlind) {
@@ -132,14 +138,16 @@ export default function Chat({ role}: { role: any}) {
               </div>
             </div>
           </div>
-          <History />
-          <History />
-          <History />
-          <History />
-          <History />
-          <History />
-          <History />
-          <History />
+
+          <History ID={1} />
+          <History ID={2} />
+          <History ID={3} />
+          <History ID={4} />
+          <History ID={5} />
+          <History ID={6} />
+          <History ID={7} />
+          <History ID={8} />
+          <History ID={9} />
         </div>
         <div className="flex flex-col px-0 pb-10 md:px-0 justify-end items-center w-full md:w-[70%] lg:w-[80%] max-h-screen overflow-y-scroll">
           <header className="fixed top-0 left-0 w-full py-4 px-2 bg-[#080716] flex md:hidden justify-end items-center">
