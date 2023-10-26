@@ -11,13 +11,13 @@ export default function Home() {
   return (
     <>
       {/* <Landing/> */}
-      <Login/>  
+      {/* <Login/>   */}
       {/* <Options/> */}
       {/* <UnitConverter/> */}
       {/* <Games/> */}
      {/* <Chat /> */}
      {/* <Weather/> */}
-     {/* <ChatOptions/> */}
+     <ChatOptions/>
      </>
   );
 }
