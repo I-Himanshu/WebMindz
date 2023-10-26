@@ -118,10 +118,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
           </div>
           <div className="flex flex-row justify-between w-full">
             <p className="text-white px-4 py-2 mb-8 w-full blueGrad secondaryFont text-lg cursor-pointer opacity-75 transition-all hover:opacity-100 mr-6" onClick={
-              ()=>{
-                (localStorage.getItem("CHATS")&&JSON.parse(localStorage.getItem("CHATS"))[role])?<Link href={`/chat/${role}/${Object.keys(JSON.parse(localStorage.getItem("CHATS"))[role]).length+1}`}></Link>:<Link href={`/chat/${role}/1`}></Link>
-              }
-            
+              ()=> location.href=`/chat/${role}/${Math.random().toString(36).substring(2,7)}`
             }>
               <b className="mr-4">+</b>
               New Chat
