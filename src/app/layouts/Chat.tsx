@@ -24,6 +24,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
     {
       text: roleData.welcome_message,
       isUser: false,
+      timestamp: new Date(),
     },
   ]);
   useEffect(()=>{
@@ -64,7 +65,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
     // scroll to bottom
     const scrollHere = document.getElementById("scrollHere");
     if (transcript.trim().length === 0) return;
-    setMSGS([...MSGS, { text: transcript, isUser: true }]);
+    setMSGS([...MSGS, { text: transcript, isUser: true,timestamp:new Date() }]);
     setTranscript("");
     await toggleListening(
       setTranscript, 
@@ -84,8 +85,8 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
     setMSGS([
       ...MSGS,
       ...[
-        { text: transcript, isUser: true },
-        { text: data.chat, isUser: false },
+        { text: transcript, isUser: true,timestamp:new Date() },
+        { text: data.chat, isUser: false , timestamp:new Date()},
       ],
     ]);
     //setIsAutoEnd(false);
@@ -147,7 +148,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
           <div>
               {
                 localStorage.getItem("CHATS")?Object.keys(JSON.parse(localStorage.getItem("CHATS"))[role]||{}).map((id:any,index:any)=>{
-                  return <History key={index} ID={id} />
+                  return <History key={index} ID={id} role={role}/>
                 }):<></>
               }
           </div>
@@ -222,13 +223,10 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
                 className="blueGradText mb-4 text-2xl opacity-75 transition-all hover:opacity-100 mx-2"
                 onClick={ () => {
                  
-                    toggleListening(
-                    
-                    setTranscript,
-                    setIsAutoEnd
-                  );
-                  
-                  
+                    toggleListening(          
+                      setTranscript,
+                      setIsAutoEnd
+                    );
                 }}
               >
                 <i className="fa-solid fa-microphone"></i>
