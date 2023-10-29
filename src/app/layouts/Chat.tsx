@@ -6,10 +6,19 @@ import React, { useEffect, useState } from "react";
 import { toggleListening } from "../../components/chat/speech";
 import { ROLES } from "@/components/chat/roles";
 import Link from "next/link";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/config";
 
 export default function Chat({ role,ID}: { role: any,ID:any}) {
   const [transcript, setTranscript] = useState("");
   const [isAutoEnd, setIsAutoEnd] = useState(false);
+  const [user, setUser]:[any,any] = React.useState(null);
+
+  React.useEffect(() => {
+      auth.onAuthStateChanged((user:any) => {
+          setUser(user);
+      });
+  }, []);
 
   const roleData = ROLES[role];
   console.log(roleData);
@@ -129,15 +138,21 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
                 <div className="w-[50px] h-[50px] rounded-full ">
                   <img
                     className="w-full h-full rounded-full cursor-pointer"
-                    src="https://i.pravatar.cc/300"
+                    src={user?.photoURL||"https://i.pravatar.cc/300"}
                     alt=""
                   />
                 </div>
                 <div className="opacity-0 group-hover:opacity-100 absolute z-20 -bottom-[80px] right-0 bg-[#15132f] w-[150px] p-2">
                   <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2 pb-2 border-b-[1px] border-[#eeeeee5f]">
-                    Profile Name
+                    {user?.displayName}
                   </p>
-                  <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2">
+                  <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2" onClick={
+                    ()=>{
+                      signOut(auth);
+                      location.href="/";
+                    }
+                  
+                  }>
                     Logout
                   </p>
                 </div>
@@ -166,15 +181,19 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
                   <div className="w-[40px] h-[40px] rounded-full ">
                     <img
                       className="w-full h-full rounded-full cursor-pointer"
-                      src="https://i.pravatar.cc/300"
+                      src={user?.photoURL||"https://i.pravatar.cc/300"}
                       alt=""
                     />
                   </div>
                   <div className="opacity-0 group-hover:opacity-100 absolute z-20 -bottom-[80px] right-0 bg-[#15132f] w-[150px] p-2">
                     <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2 pb-2 border-b-[1px] border-[#eeeeee5f]">
-                      Profile Name
+                      {user?.displayName}
                     </p>
-                    <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2">
+                    <p className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2" onClick={()=>{
+                      signOut(auth);
+                      location.href="/";
+                      console.log("Logout");
+                    }}>
                       Logout
                     </p>
                   </div>
