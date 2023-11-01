@@ -28,9 +28,9 @@ function NewsPage() {
         <main className="flex min-h-screen flex-col items-center justify-center bg-[#15132f] w-full p-6 md:p-12 lg:p-20 relative">
       <div className="flex flex-row justify-center items-center w-full z-20">
         <p className="blueGradText primaryFont text-3xl md:text-5xl lg:text-7xl md:leading-[4rem]">Latest Units</p>
-        <img className="w-32" src="https://cdn3d.iconscout.com/3d/premium/thumb/cute-robot-with-creative-idea-6374843-5272689.png?f=webp" alt="" />
+        <img className="w-12 md:w-32" src="https://cdn3d.iconscout.com/3d/premium/thumb/cute-robot-with-creative-idea-6374843-5272689.png?f=webp" alt="" />
       </div>
-            <ul className="grid grid-cols-4 gap-4 mt-20">
+            <ul className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10 md:mt-20">
                 {
                     news.map((item, index) => (
                         <li key={index} className="pb-4 overflow-hidden flex flex-col rounded-lg shadow-md text-center blueGrad2 group text-black">
