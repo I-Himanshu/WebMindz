@@ -24,14 +24,20 @@ function NewsPage() {
     if (error) return <div>Error: {error.message}</div>
 
        return (
-            <ul className="divide-y divide-gray-200">
+        <>
+        <main className="flex min-h-screen flex-col items-center justify-center bg-[#15132f] w-full p-6 md:p-12 lg:p-20 relative">
+      <div className="flex flex-row justify-center items-center w-full z-20">
+        <p className="blueGradText primaryFont text-3xl md:text-5xl lg:text-7xl md:leading-[4rem]">Latest Units</p>
+        <img className="w-32" src="https://cdn3d.iconscout.com/3d/premium/thumb/cute-robot-with-creative-idea-6374843-5272689.png?f=webp" alt="" />
+      </div>
+            <ul className="grid grid-cols-4 gap-4 mt-20">
                 {
                     news.map((item, index) => (
-                        <li key={index} className="py-4 flex">
-                            <img className="h-10 w-10 rounded-full" src={item.urlToImage} alt="" />
-                            <div className="ml-3">
-                                <p className="text-sm font-medium text-gray-900">{item.title}</p>
-                                <div className="flex space-x-1 text-sm text-gray-500">
+                        <li key={index} className="pb-4 overflow-hidden flex flex-col rounded-lg shadow-md text-center blueGrad2 group text-black">
+                            <img className="h-[200px] w-full" src={item.urlToImage} alt="" />
+                            <div className="pt-4 px-2">
+                                <p className="text-lg text-left font-bold opacity-80 leading-5">{item.title}</p>
+                                <div className="flex space-x-1 text-sm text-gray-500 mt-4 w-full justify-end">
                                     <time dateTime="2023-10-23">{item.publishedAt}</time>
                                     <span aria-hidden="true">&middot;</span>
                                     <span>{item.author}</span>
@@ -41,6 +47,8 @@ function NewsPage() {
                     ))
                 }
             </ul>
+            </main>
+            </>
     )
 
 
