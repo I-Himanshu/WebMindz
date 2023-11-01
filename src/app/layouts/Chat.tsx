@@ -142,7 +142,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
                     alt=""
                   />
                 </div>
-                <div className="opacity-0 group-hover:opacity-100 absolute z-20 -bottom-[80px] right-0 bg-[#15132f] w-[150px] p-2">
+                <div className="opacity-0 group-hover:opacity-100 absolute z-20 -bottom-[80px] right-0 bg-[#15132f] w-[110px] p-2">
                   <Link href={"/profile"} className="secondaryFont text-[#eeeeee5f] cursor-pointer transition-all hover:text-white my-2 pb-2 border-b-[1px] border-[#eeeeee5f]">
                     Profile
                   </Link>
