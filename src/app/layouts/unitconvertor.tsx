@@ -4,7 +4,7 @@ import Volume from '@/components/unitconvertor/volume'
 import Weight from '@/components/unitconvertor/weight'
 import React from 'react'
 
-export default function unitconvertor() {
+export default function UnitConvertor() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-[#15132f] w-full p-6 md:p-12 lg:p-20 relative">
       <div className="flex flex-row justify-center items-center w-full z-20">
