@@ -29,7 +29,7 @@ export default function Options() {
         
         <IconBox iconClass="fa-solid fa-language" text="Translator" />
         <IconBox iconClass="fa-solid fa-scale-unbalanced-flip" text="Unit Convertor" />
-        <IconBox iconClass="fa-solid fa-file" text="File Drop" />
+        {/* <IconBox iconClass="fa-solid fa-file" text="File Drop" /> */}
        </div>
       </div>
     </main>
