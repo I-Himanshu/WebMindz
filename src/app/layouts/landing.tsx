@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Landing() {
   return (
     <main className="bg flex min-h-screen flex-col items-center justify-center w-full p-24 gap-10">
@@ -9,7 +11,7 @@ export default function Landing() {
               <b className="text-[12vmin] -mt-6 blueGradText specialFont tracking-widest">WebMindz</b>
               <p className="secondaryFont -mt-6 ml-5 font-thin opacity-70">Chat Like Never Before: AI at Your Fingertips</p>
             <div className="flex flex-row justify-start mt-12 items-center">
-              <button className="grid place-items-center px-8 py-3 mx-3 bg-[#4884ee] text-white secondaryFont opacity-75 transition-all hover:opacity-100">Login</button>
+              <Link href={"/login"} className="grid place-items-center px-8 py-3 mx-3 bg-[#4884ee] text-white secondaryFont opacity-75 transition-all hover:opacity-100">Login</Link>
               <button className="grid place-items-center px-8 py-3 mx-3 bg-white text-[#4884ee] secondaryFont opacity-75 transition-all hover:opacity-100">SignUp</button>
             </div>
             </div>

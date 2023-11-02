@@ -8,6 +8,12 @@ import Table from './Table';
 
 
 export default function Weather({ city }) {
+  const [isBlind, setIsBlind] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem('isBlind')) {
+      setIsBlind(true);
+    }
+  }, [])
   const APIkey = '41f10dab3b3d521cccd0c5bc11f21ad6';
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIkey}`;
   const [data, setData] = useState(null);
@@ -34,6 +40,25 @@ export default function Weather({ city }) {
   if (!data || !hourlyData) return (<div className={`z-20 text-white text-lg md:text-2xl text${hours} font-black flex flow-row items-center`}>
     <i className="fa-solid fa-cloud-moon"></i> <p className='ml-2'>Loading...</p>
   </div>)
+
+  // Speak the weather
+  const speak = (text)=>{
+    if ("speechSynthesis" in window && isBlind) {
+      console.log("Speaking");
+      var to_speak = new SpeechSynthesisUtterance(text);
+      to_speak.lang = "en-IN";
+      to_speak.rate = 0.8;
+      to_speak.pitch = 1;
+      to_speak.voice = window.speechSynthesis.getVoices()[0];
+      window.speechSynthesis.speak(to_speak);
+    }
+    else{
+      
+      
+    }
+  }
+  // speak the weather
+  speak(`The weather in ${data.name} is ${Math.round(data.main.temp)} degrees celsius and ${data.weather[0].description}`);
   return (
     <>
       <div className="flex flex-row flex-wrap md:flex-nowrap justify-center md:justify-between w-[90vw] md:w-[85vw] lg:w-[75vw] mt-12">

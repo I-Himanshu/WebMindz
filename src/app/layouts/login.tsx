@@ -1,12 +1,36 @@
 // import "../../app/global.css";
 import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { auth } from "../../firebase/config";
+import { useEffect, useState } from "react";
 export default function Login() {
+  // check if user is logged in or not
+  const [user, setUser]:[any,any] = useState(null)
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setUser(user)
+      } else {
+        setUser(null)
+      }
+    })
+    // perform cleanup
+    return unsubscribe
+  }
+    , []);
+  // if user is logged in redirect to options page
+  useEffect(() => {
+    if (user) {
+      window.location.href = "/"
+    }
+  }, [user])
+
+
 
   const signInWithGoogle = (e) => {
     e.preventDefault();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
+
   };
   return (
     <main className="flex min-h-screen flex-col lg:flex-row items-center justify-center lg:justify-between w-full lg:px-40 relative">
