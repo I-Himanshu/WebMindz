@@ -2,12 +2,12 @@
 import React, { useEffect } from 'react'
 
 function NewsPage() {
-    // Get news from any api
+
     const [news, setNews] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
 
-    // get news from /api/news
+   
     useEffect(() => {
         fetch('/api/news')
             .then(res => res.json())
@@ -15,13 +15,13 @@ function NewsPage() {
                 setNews(data)
                 setLoading(false)
             })
-            .catch(err => {
+            .catch((err: any) => {
                 setError(err)
                 setLoading(false)
             })
     }, [])
     if (loading) return <div>Loading...</div>
-    if (error) return <div>Error: {error.message}</div>
+    if (error) return <div>Error: {(error as any).message}</div>
 
     return (
         <>
