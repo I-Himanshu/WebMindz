@@ -1,13 +1,17 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function NewsPage() {
 
     const [news, setNews] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
-
-   
+    const [isBlind, setIsBlind] = useState(false);
+    useEffect(() => {
+        if (localStorage.getItem('isBlind')) {
+        setIsBlind(true);
+        }
+    }, [])
     useEffect(() => {
         fetch('/api/news')
             .then(res => res.json())
@@ -22,6 +26,18 @@ function NewsPage() {
     }, [])
     if (loading) return <div>Loading...</div>
     if (error) return <div>Error: {(error as any).message}</div>
+    const speak = (text:string)=>{
+        if ("speechSynthesis" in window && isBlind) {
+          console.log("Speaking");
+          console.log(text);
+          var to_speak = new SpeechSynthesisUtterance(text);
+          to_speak.lang = "en-IN";
+          to_speak.rate = 0.8;
+          to_speak.pitch = 1;
+          to_speak.voice = window.speechSynthesis.getVoices()[0];
+          window.speechSynthesis.speak(to_speak);
+        }
+    } 
 
     return (
         <>
@@ -33,7 +49,11 @@ function NewsPage() {
                 <ul className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10 md:mt-20">
                     {
                         news.map((item, index) => (
-                            <li key={index} className="pb-4 overflow-hidden flex flex-col rounded-lg shadow-md text-center blueGrad2 group text-black transition-all hover:scale-110">
+                            <li key={index} className="pb-4 overflow-hidden flex flex-col rounded-lg shadow-md text-center blueGrad2 group text-black transition-all hover:scale-110" onClick={()=>{
+                                isBlind && speak(`
+                                 ${item.title}. Briefly ${item.description}
+                                `)
+                            }}>
                                 <img className="h-[200px] w-full" src={item.urlToImage} alt="" />
                                 <div className="pt-4 px-2">
                                     <p className="text-lg text-left font-bold opacity-80 leading-5">{item.title}</p>
