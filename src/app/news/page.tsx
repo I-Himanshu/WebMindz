@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 function NewsPage() {
 
-    const [news, setNews] = React.useState([]);
+    const [news, setNews]:[any, any] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
     const [isBlind, setIsBlind] = useState(false);
@@ -48,7 +48,7 @@ function NewsPage() {
                 </div>
                 <ul className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10 md:mt-20">
                     {
-                        news.map((item, index) => (
+                        news.map((item:any, index:any) => (
                             <li key={index} className="pb-4 overflow-hidden flex flex-col rounded-lg shadow-md text-center blueGrad2 group text-black transition-all hover:scale-110" onClick={()=>{
                                 isBlind && speak(`
                                  ${item.title}. Briefly ${item.description}
