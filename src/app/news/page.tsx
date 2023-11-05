@@ -51,7 +51,7 @@ function NewsPage() {
                         news.map((item:any, index:any) => (
                             <li key={index} className="pb-4 overflow-hidden flex flex-col rounded-lg shadow-md text-center blueGrad2 group text-black transition-all hover:scale-110" onClick={()=>{
                                 isBlind && speak(`
-                                 ${item.title}. Briefly ${item.description}
+                                 ${item.title}
                                 `)
                             }}>
                                 <img className="h-[200px] w-full" src={item.urlToImage} alt="" />
