@@ -48,7 +48,7 @@ export const toggleListening = ( setTranscript:any,setIsAutoEnd:any,pauseAudio:b
         setTimeout(()=>{
           recognition.stop();
           setIsAutoEnd(true);
-        },15000)
+        },1000)
       }
 
       recognition.onaudioend = (event:any) => {
