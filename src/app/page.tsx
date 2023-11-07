@@ -10,6 +10,7 @@ import ChatOptions from "./layouts/ChatOptions";
 import {auth} from "../firebase/config"
 import { useEffect, useState } from "react";
 import Blind from "./layouts/Blind";
+import BlindOptions from "./layouts/BlindOptions";
 
 export default function Home() {
   //  check if user is logged in or not
@@ -52,7 +53,8 @@ export default function Home() {
      {/* <Chat /> */}
      {/* <Weather/> */}
      {/* <ChatOptions/> */}
-     <Blind/>
+     {/* <Blind/> */}
+     <BlindOptions/>
      </>
   );
 
