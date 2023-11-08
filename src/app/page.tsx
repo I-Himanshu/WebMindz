@@ -53,8 +53,8 @@ export default function Home() {
      {/* <Chat /> */}
      {/* <Weather/> */}
      {/* <ChatOptions/> */}
-     {/* <Blind/> */}
-     <BlindOptions/>
+     <Blind/>
+     {/* <BlindOptions/> */}
      </>
   );
 
