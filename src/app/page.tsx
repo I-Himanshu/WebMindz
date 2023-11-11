@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <Landing/> */}
+      <Landing/>
       {/* <Login/>   */}
       {/* <Options/> */}
       {/* <UnitConverter/> */}
@@ -53,7 +53,7 @@ export default function Home() {
      {/* <Chat /> */}
      {/* <Weather/> */}
      {/* <ChatOptions/> */}
-     <Blind/>
+     {/* <Blind/> */}
      {/* <BlindOptions/> */}
      </>
   );
