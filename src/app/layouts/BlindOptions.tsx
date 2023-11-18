@@ -13,11 +13,11 @@ export default function BlindOptions() {
                         <i className="fa-solid fa-message text-[35px] md:text-[50px] mb-2 text-black transition-all group-hover:text-white" />
                         <b className="primaryFont transition-all group-hover:text-white text-[35px] md:text-[50px]">Chat</b>
                     </div>
-                    <div onClick={()=>window.lo } className="flex flex-col items-center justify-center rounded-lg w-full shadow-md text-center blueGrad2 group text-black">
+                    <div onClick={()=>{window.location.href = "/news"}} className="flex flex-col items-center justify-center rounded-lg w-full shadow-md text-center blueGrad2 group text-black">
                         <i className="fa-solid fa-newspaper text-[35px] md:text-[50px] mb-2 text-black transition-all group-hover:text-white" />
                         <b className="primaryFont transition-all group-hover:text-white text-[35px] md:text-[50px]">News</b>
                     </div>
-                    <div className="flex flex-col items-center justify-center rounded-lg w-full shadow-md text-center blueGrad2 group text-black">
+                    <div  onClick={()=>{window.location.href = "/weather"}}  className="flex flex-col items-center justify-center rounded-lg w-full shadow-md text-center blueGrad2 group text-black">
                         <i className="fa-solid fa-cloud text-[35px] md:text-[50px] mb-2 text-black transition-all group-hover:text-white" />
                         <b className="primaryFont transition-all group-hover:text-white text-[35px] md:text-[50px]">Weather</b>
                     </div>
