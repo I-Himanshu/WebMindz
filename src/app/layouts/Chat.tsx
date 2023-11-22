@@ -3,7 +3,7 @@ import History from "../../components/chat/history";
 import Robo from "../../components/chat/robo";
 import User from "../../components/chat/user";
 import React, { useEffect, useState } from "react";
-import { toggleListening } from "../../components/chat/speech";
+import toggleListening from "../../components/chat/speech";
 import { ROLES } from "@/components/chat/roles";
 import Link from "next/link";
 import { signOut } from "firebase/auth";
@@ -41,7 +41,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
   },[isAutoEnd])
   useEffect(() => {
     
-    const chats = JSON.parse(localStorage.getItem("CHATS"))||{};
+    const chats = JSON.parse(localStorage.getItem("CHATS")||"{}")||{};
     // if wangt to check if chats have key ROLE.ID then setMSGS else setMSGS to roleData.welcome_message
     if (!(Object.keys(chats).length === 0 && chats.constructor === Object)) {
       if (chats[role] && chats[role][ID]) {
@@ -52,7 +52,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
   
   useEffect(() => {
     // update localstorage
-    const chats = JSON.parse(localStorage.getItem("CHATS"))||{};
+    const chats = JSON.parse(localStorage.getItem("CHATS")||"{}")||{};
     chats[role] = chats[role] || {};
     chats[role][ID] = MSGS;
     localStorage.setItem("CHATS", JSON.stringify(chats));
@@ -162,7 +162,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
 
           <div>
               {
-                localStorage.getItem("CHATS")?Object.keys(JSON.parse(localStorage.getItem("CHATS"))[role]||{}).map((id:any,index:any)=>{
+                localStorage.getItem("CHATS")?Object.keys(JSON.parse(localStorage.getItem("CHATS")||"{}")[role]||{}).map((id:any,index:any)=>{
                   return <History key={index} ID={id} role={role}/>
                 }):<></>
               }

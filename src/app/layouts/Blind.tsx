@@ -25,9 +25,9 @@ export default function Blind() {
                         }
                     }>
                         <i className="blueGradText text-3xl mb-8 md:text-5xl lg:text-7xl md:leading-[4rem] transition-all group-hover:hidden fa-solid fa-square-xmark"></i>
-                        <p className="text-center blueGradText primaryFont text-3xl md:text-5xl lg:text-7xl md:leading-[4rem] transition-all group-hover:hidden">I ain't Blind</p>
+                        <p className="text-center blueGradText primaryFont text-3xl md:text-5xl lg:text-7xl md:leading-[4rem] transition-all group-hover:hidden">I am not Blind</p>
                         <i className="hidden opacity-0 group-hover:opacity-100 text-white text-3xl mb-8 md:text-5xl lg:text-7xl md:leading-[4rem] transition-all group-hover:block fa-solid fa-square-xmark"></i>
-                        <p className="text-center hidden primaryFont text-white text-3xl md:text-5xl lg:text-7xl md:leading-[4rem] transition-all group-hover:block">I ain't Blind</p>
+                        <p className="text-center hidden primaryFont text-white text-3xl md:text-5xl lg:text-7xl md:leading-[4rem] transition-all group-hover:block">I am not Blind</p>
                     </div>
                 </div>
             </main>

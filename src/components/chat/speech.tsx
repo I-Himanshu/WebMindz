@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
   
-export const toggleListening = ( setTranscript:any,setIsAutoEnd:any,pauseAudio:boolean  = false) => {
+export default function ( setTranscript:any,setIsAutoEnd:any,pauseAudio:boolean  = false) {
   // vibrate for 3s
     navigator.vibrate(3000);
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {

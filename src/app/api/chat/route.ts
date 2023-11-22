@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
+import { ObjectType } from 'typescript';
 
-const CODES = {
-    "doctor": "clo5xbzdg0001mb087q25c9zo",
+const CODES:{ [key: string]: string } = {
+    doctor: "clo5xbzdg0001mb087q25c9zo",
     "default":"clnpzydgw0001mo08n9kwq6ia"
 }
 export async function POST(request: Request) {
