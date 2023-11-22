@@ -1,4 +1,4 @@
-export const ROLES = {
+export const ROLES:{ [key: string]: any } = {
         "doctor": {
             "name": "Doctor",
             "icon": "https://img.icons8.com/emoji/48/000000/doctor-medium-light-skin-tone.png",
