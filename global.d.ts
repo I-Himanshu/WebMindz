@@ -1,5 +1,5 @@
 typescript
-interface Window {
+interface window {
   SpeechRecognition: any;
   webkitSpeechRecognition: any;
   responsiveVoice: any;
