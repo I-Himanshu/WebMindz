@@ -9,7 +9,7 @@ export default function History({ ID,role }: { ID: any,role:any }) {
   if (!local) return null;
   local = JSON.parse(local);
   if (!local) return null;
-  const chats = local[role]||{};
+  const chats:any = local[role]||{};
   const msgs = chats[ID]||[];
   const lastMsg = msgs[msgs.length - 1];
   return (
