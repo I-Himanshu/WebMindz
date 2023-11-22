@@ -6,7 +6,7 @@ import { useState } from 'react';
 export const toggleListening = ( setTranscript:any,setIsAutoEnd:any,pauseAudio:boolean  = false) => {
   // vibrate for 3s
     navigator.vibrate(3000);
-    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+    if (0 && 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
       const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.continuous = true;
       recognition.interimResults = true;

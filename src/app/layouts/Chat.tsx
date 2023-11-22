@@ -3,7 +3,7 @@ import History from "../../components/chat/history";
 import Robo from "../../components/chat/robo";
 import User from "../../components/chat/user";
 import React, { useEffect, useState } from "react";
-import { toggleListening } from "../../components/chat/speech";
+import toggleListening from "../../components/chat/speech";
 import { ROLES } from "@/components/chat/roles";
 import Link from "next/link";
 import { signOut } from "firebase/auth";
