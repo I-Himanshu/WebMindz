@@ -21,7 +21,7 @@ export default function Blind() {
                     onClick={
                         ()=>{
                             window.localStorage.setItem("isBlind","false");
-                            window.location.href="/ChatOptions";
+                            window.location.href="/Options";
                         }
                     }>
                         <i className="blueGradText text-3xl mb-8 md:text-5xl lg:text-7xl md:leading-[4rem] transition-all group-hover:hidden fa-solid fa-square-xmark"></i>

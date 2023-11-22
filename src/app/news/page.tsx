@@ -40,7 +40,7 @@ function NewsPage() {
   
   if (isBlind) {
     var currentReading = 0;
-    speak(news[currentReading++].title);
+    // speak(news[currentReading++].title);
     speak("Welcome to News section, press any key or tap anywhere for next news")
     window.addEventListener("keydown", (e) => {
       if (news[currentReading]) {
