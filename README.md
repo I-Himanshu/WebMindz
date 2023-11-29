@@ -1,3 +1,13 @@
+# About
+
+In the realm where sight falters, the visually impaired encounter a myriad of challenges due to a scarcity of tailored tools. This groundbreaking project endeavors to reshape their digital landscape by crafting an AI chatbot infused with Speech-to-Text and Text-to-Speech capabilities. Beyond mere communication, it aspires to be a versatile companion, offering features like unit conversion, gaming, translation, file management, real-time weather updates, and news services. Aiming to harmonize user-friendliness with integration, this initiative envisions a future where technology seamlessly empowers and enriches the lives of those navigating a world without sight.
+
+# View
+https://webmindz.netlify.app/
+
+## Note
+In the chat screen while on a laptop or desktop, you can use the spacebar key to automatically turn on and off the mic. 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
