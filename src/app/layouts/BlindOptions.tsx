@@ -21,7 +21,7 @@ export default function BlindOptions() {
                         <i className="fa-solid fa-cloud text-[35px] md:text-[50px] mb-2 text-black transition-all group-hover:text-white" />
                         <b className="primaryFont transition-all group-hover:text-white text-[35px] md:text-[50px]">Weather</b>
                     </div>
-                    <div className="flex flex-col items-center justify-center rounded-lg w-full shadow-md text-center blueGrad2 group text-black">
+                    <div onClick={()=>{window.location.href = "/Options"}} className="flex flex-col items-center justify-center rounded-lg w-full shadow-md text-center blueGrad2 group text-black">
                         <i className="fa-solid fa-robot text-[35px] md:text-[50px] mb-2 text-black transition-all group-hover:text-white" />
                         <b className="primaryFont transition-all group-hover:text-white text-[35px] md:text-[50px]">Others</b>
                     </div>

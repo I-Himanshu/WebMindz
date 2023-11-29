@@ -9,6 +9,7 @@ import Link from "next/link";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
 
+
 export default function Chat({ role,ID}: { role: any,ID:any}) {
   const [transcript, setTranscript] = useState("");
   const [isAutoEnd, setIsAutoEnd] = useState(false);
@@ -59,6 +60,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
   }
   , [MSGS]);
 
+
   const speak = (text:any)=>{
     if ("speechSynthesis" in window && isBlind) {
       console.log("Speaking");
@@ -76,10 +78,10 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
     if (transcript.trim().length === 0) return;
     setMSGS([...MSGS, { text: transcript, isUser: true,timestamp:new Date() }]);
     setTranscript("");
-    await toggleListening(
-      setTranscript, 
-      setIsAutoEnd,true
-    );
+    // await toggleListening(
+    //   setTranscript, 
+    //   setIsAutoEnd,true
+    // );
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -101,6 +103,21 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
     //setIsAutoEnd(false);
     scrollHere?.scrollIntoView({ behavior: "smooth" });
   };
+ useEffect(()=>{
+  if(isBlind){
+    document.body.addEventListener("keydown",(e)=>{
+      if(e.keyCode === 32){
+        toggleListening(          
+          setTranscript,
+          setIsAutoEnd
+        );
+        console.log("Space");
+      }
+      console.log(e, "key");
+    })
+  }
+  },[isBlind])
+
   return (
     <main className="min-h-screen bg-[#15132f]">
       <div className="flex flex-row w-full min-h-screen">
