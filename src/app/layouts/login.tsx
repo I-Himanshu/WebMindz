@@ -17,7 +17,10 @@ export default function Login() {
     , []);
   useEffect(() => {
     if (user) {
-      window.location.href = "/isBlind"
+      if(typeof window !== "undefined"){
+        window.location.href = "/isBlind"
+      }
+      
     }
   }, [user])
 

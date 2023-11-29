@@ -8,8 +8,10 @@ export default function Blind() {
                 <div className="bg3"></div>
                 <div className="flex bg-white z-20 w-full h-full md:h-auto md:w-[1000px]">
                     <div className="flex flex-col items-center justify-center md:justify-start w-1/2 md:px-6 py-12 border-r-4 border-[#8b8b8b66] transition-all hover:bg-blue-500 group cursor-pointer h-full md:h-[270px]" onClick={()=>{
+                        if(typeof window !== "undefined"){
                             window.localStorage.setItem("isBlind","true");
                             window.location.href="/BlindOptions";
+                        }
                         }
                     }>
                         <i className="blueGradText text-3xl mb-8 md:text-5xl lg:text-7xl md:leading-[4rem] transition-all group-hover:hidden fa-solid fa-square-check"></i>

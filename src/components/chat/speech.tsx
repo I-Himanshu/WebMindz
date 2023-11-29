@@ -6,6 +6,7 @@ import { useState } from 'react';
 export default function (setTranscript: any, setIsAutoEnd: any, pauseAudio: boolean = false) {
   // vibrate for 3s
   navigator.vibrate(3000);
+  if(typeof window !== "undefined"){
   if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
     const recognition = new ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition)();
     recognition.continuous = true;
@@ -70,5 +71,8 @@ export default function (setTranscript: any, setIsAutoEnd: any, pauseAudio: bool
 
   } else {
     alert("Speech recognition is not supported in your browser.");
+  }
+}else {
+    alert("wINDOW is not supported in your browser.");
   }
 };

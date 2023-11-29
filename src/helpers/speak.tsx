@@ -1,6 +1,7 @@
 
 "use client"
 export const speak = (text:any)=>{
+  if(typeof window !== "undefined"){
     window.speechSynthesis.cancel();
     var isBlind = localStorage.getItem("isBlind");
     if ("speechSynthesis" in window && isBlind) {
@@ -13,3 +14,4 @@ export const speak = (text:any)=>{
       window.speechSynthesis.speak(to_speak);
     }
   }
+}

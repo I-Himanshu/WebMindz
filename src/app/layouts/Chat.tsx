@@ -62,6 +62,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
 
 
   const speak = (text:any)=>{
+    if(typeof window !== "undefined"){
     if ("speechSynthesis" in window && isBlind) {
       console.log("Speaking");
       var to_speak = new SpeechSynthesisUtterance(text);
@@ -71,6 +72,7 @@ export default function Chat({ role,ID}: { role: any,ID:any}) {
       to_speak.voice = window.speechSynthesis.getVoices()[0];
       window.speechSynthesis.speak(to_speak);
     }
+  }
   }
   const sendMsg = async () => {
     // scroll to bottom
