@@ -1,4 +1,5 @@
 # About
+
 In the realm where sight falters, the visually impaired encounter a myriad of challenges due to a scarcity of tailored tools. This groundbreaking project endeavors to reshape their digital landscape by crafting an AI chatbot infused with Speech-to-Text and Text-to-Speech capabilities. Beyond mere communication, it aspires to be a versatile companion, offering features like unit conversion, gaming, translation, file management, real-time weather updates, and news services. Aiming to harmonize user-friendliness with integration, this initiative envisions a future where technology seamlessly empowers and enriches the lives of those navigating a world without sight.
 
 # View
